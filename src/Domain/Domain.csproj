@@ -7,4 +7,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Common\Behaviours\" />
+    <Folder Include="Journal\Command\" />
+    <Folder Include="Journal\Queries\" />
+    <Folder Include="SelfAssessment\Command\" />
+    <Folder Include="SelfAssessment\Queries\" />
+  </ItemGroup>
+
 </Project>
