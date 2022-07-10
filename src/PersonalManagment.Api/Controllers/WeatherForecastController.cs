@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
 
 namespace PersonalManagment.Api.Controllers
 {

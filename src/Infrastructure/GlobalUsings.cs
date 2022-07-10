@@ -7,8 +7,5 @@ global using Google.Apis.Fitness.v1.Data;
 
 namespace Infrastructure
 {
-    public class GlobalUsings
-    {
 
-    }
 }

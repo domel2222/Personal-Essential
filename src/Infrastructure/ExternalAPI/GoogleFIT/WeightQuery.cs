@@ -6,7 +6,7 @@ namespace Infrastructure.ExternalAPI.GoogleFIT
         private const string DataSourceId = "derived:com.google.weight:com.google.android.gms:merge_weight";
         private const string DataType = "com.google.weight.summary";
         public WeightQuery(FitnessService fitnesService) :
-                        base(fitnesService, DataSourceId, DataType)
+                            base(fitnesService, DataSourceId, DataType)
         {
         }
 
