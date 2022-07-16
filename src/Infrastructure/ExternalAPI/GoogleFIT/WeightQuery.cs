@@ -43,6 +43,7 @@ namespace Infrastructure.ExternalAPI.GoogleFIT
                         Stamp = q.Key,
                         MaxWeight = q.Max(w => w.Weight),
                         MinWeight = q.Min(w => w.Weight),
+
                     })
                     .ToList();
         }

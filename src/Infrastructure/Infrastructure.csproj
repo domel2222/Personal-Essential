@@ -15,4 +15,8 @@
     <PackageReference Include="Google.Apis.Fitness.v1" Version="1.57.0.2454" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Application\Application.csproj" />
+  </ItemGroup>
+
 </Project>

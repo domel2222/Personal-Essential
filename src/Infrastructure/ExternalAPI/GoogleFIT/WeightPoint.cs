@@ -3,9 +3,9 @@ namespace Infrastructure.ExternalAPI.GoogleFIT
 {
     public record WeightDataPoint
     {
-        public double? Weight { get; set; }
-        public DateTime Stamp { get; set; }
-        public double? MaxWeight { get; set; }
-        public double? MinWeight { get; set; }
+        public double? Weight { get; init; }
+        public DateTime Stamp { get; init; }
+        public double? MaxWeight { get; init; }
+        public double? MinWeight { get; init; }
     }
 }
