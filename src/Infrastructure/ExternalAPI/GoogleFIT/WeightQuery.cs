@@ -10,12 +10,12 @@ namespace Infrastructure.ExternalAPI.GoogleFIT
         {
         }
 
-        public IList<WeightDataPoint> GetQueryWeight(DateTime start, DateTime end)
+        private  IList<WeightDataPoint> GetQueryWeight(DateTime start, DateTime end)
         {
             var request = CreateRequest(start, end);
             var response = ExecuteRequest(request);
 
-            return response
+            return  response
                     .Bucket
                     .SelectMany(x => x.Dataset)
                     .Where(x => x.Point != null)
@@ -27,8 +27,8 @@ namespace Infrastructure.ExternalAPI.GoogleFIT
                                         new WeightDataPoint()
                                         {
                                             Weight = x.FpVal.GetValueOrDefault(),
-                                            Stamp = GoogleTimeHelper.FromNanoseconds(p.StartTimeNanos).ToDateTime()
-                                        });
+                                            Stamp = GoogleTimeHelper.FromNanoseconds(p.StartTimeNanos).ToDateTime().ToLocalTime()
+                                        }) ;
                     })
                     .ToList();
         }

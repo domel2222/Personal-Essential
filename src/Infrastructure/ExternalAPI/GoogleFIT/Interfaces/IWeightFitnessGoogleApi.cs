@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Common.Interfaces
 {
-    public interface IFitnessGoogleApi
+    public interface IWeightFitnessGoogleApi
     {
         IList<WeightDataPoint> GetQueryWeightPerDay(DateTime start, DateTime end);
     }

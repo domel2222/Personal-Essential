@@ -1,6 +1,7 @@
 ﻿
 using Application.Common.Interfaces;
 using Infrastructure.ExternalAPI.GoogleFIT;
+using Infrastructure.ExternalAPI.GoogleFIT.Interfaces;
 
 namespace PersonalManagment.Api.Controllers
 {
@@ -8,19 +9,39 @@ namespace PersonalManagment.Api.Controllers
     [Route("[controller]/api")]
     public class FitnessApiController : ControllerBase
     {
-        private readonly IFitnessGoogleApi _fitnessGoogleApi;
-        public FitnessApiController(IFitnessGoogleApi fitnesttGoogleApi)
+        private readonly IWeightFitnessGoogleApi _weightFitnessGoogleApi;
+        private readonly IActiveFitnessGoogleApi _activeFitnessGoogleApi;
+        public FitnessApiController(IWeightFitnessGoogleApi weightFitnesttGoogleApi,
+                                    IActiveFitnessGoogleApi activeFitnessGoogleApi)
         {
-            _fitnessGoogleApi = fitnesttGoogleApi;
+            _weightFitnessGoogleApi = weightFitnesttGoogleApi ??
+                throw new ArgumentNullException(nameof(weightFitnesttGoogleApi));
+
+            _activeFitnessGoogleApi = activeFitnessGoogleApi ??
+                 throw new ArgumentNullException(nameof(activeFitnessGoogleApi));
+            
         }
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet("weight")]
-        public async Task<ActionResult<IList<WeightDataPoint>>> GetWeight(DateTime start, DateTime end)
+        public async Task<ActionResult<IList<WeightDataPoint>>> GetWeightPerDay(DateTime start, DateTime end)
         {
-            var list =  _fitnessGoogleApi.GetQueryWeightPerDay(start, end);
+            var list =  _weightFitnessGoogleApi.GetQueryWeightPerDay(start, end);
+
+            //var vm = await Mediator.Send(new GetDirectorDetailQuery() { DirectorId = id });
+            //return vm;
+            return Ok(list);
+        }
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [HttpGet("steps")]
+        public async Task<ActionResult<IList<StepsData>>> GetStepsPerDay(DateTime start, DateTime end)
+        {
+            var list = _activeFitnessGoogleApi.GetQueryStepsPerDay(start, end);
 
             //var vm = await Mediator.Send(new GetDirectorDetailQuery() { DirectorId = id });
             //return vm;

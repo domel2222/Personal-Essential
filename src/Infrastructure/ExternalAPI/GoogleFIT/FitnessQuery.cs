@@ -44,5 +44,11 @@ namespace Infrastructure.ExternalAPI.GoogleFIT
             var aggregate = _fitnessService.Users.Dataset.Aggregate(aggregateRequest, userId);
             return aggregate.Execute();
         }
+
+        protected virtual Task<AggregateResponse> ExecuteRequestAsync(AggregateRequest aggregateRequest, string userId = "me")
+        {
+            var aggregate = _fitnessService.Users.Dataset.Aggregate(aggregateRequest, userId);
+            return aggregate.ExecuteAsync();
+        }
     }
 }
