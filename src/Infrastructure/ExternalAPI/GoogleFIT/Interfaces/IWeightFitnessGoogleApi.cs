@@ -1,4 +1,4 @@
-﻿using Infrastructure.ExternalAPI.GoogleFIT;
+﻿using Infrastructure.ExternalAPI.GoogleFIT.DataPoint;
 using System;
 using System.Collections.Generic;
 using System.Linq;

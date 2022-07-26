@@ -1,5 +1,4 @@
-﻿
-namespace Infrastructure.ExternalAPI.GoogleFIT
+﻿namespace Infrastructure.ExternalAPI.GoogleFIT.DataPoint
 {
     public record WeightDataPoint
     {

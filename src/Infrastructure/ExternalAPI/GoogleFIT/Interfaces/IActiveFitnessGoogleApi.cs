@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Infrastructure.ExternalAPI.GoogleFIT.DataPoint;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,8 @@ namespace Infrastructure.ExternalAPI.GoogleFIT.Interfaces
 {
     public interface IActiveFitnessGoogleApi
     {
-        IList<StepsData> GetQueryStepsPerDay(DateTime start, DateTime end);
-        Task<StepsData> GetQueryStepsPerDayAsync(DateTime start, DateTime end);
+        IList<StepsDataPoint> GetQueryStepsPerDay(DateTime start, DateTime end);
+        Task<StepsDataPoint> GetQueryStepsPerDayAsync(DateTime start, DateTime end);
 
     }
 }

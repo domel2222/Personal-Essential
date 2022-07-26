@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.ExternalAPI.GoogleFIT
+﻿namespace Infrastructure.ExternalAPI.GoogleFIT.DataPoint
 {
     public class ActivityQuery : FitnessQuery
     {
@@ -9,7 +9,7 @@
         {
 
         }
-        private IList<StepsData> GetQuerySteps(DateTime start, DateTime end)
+        private IList<StepsDataPoint> GetQuerySteps(DateTime start, DateTime end)
         {
             var request = CreateRequest(start, end);
             var response = ExecuteRequest(request);
@@ -23,7 +23,7 @@
                     .SelectMany(p =>
                     {
                         return p.Value.Select(x =>
-                                        new StepsData()
+                                        new StepsDataPoint()
                                         {
                                             StepCount = x.IntVal.GetValueOrDefault(),
                                             Stamp = GoogleTimeHelper.FromNanoseconds(p.StartTimeNanos).ToDateTime().ToLocalTime()
@@ -33,12 +33,12 @@
                     .ToList();
         }
 
-        public IList<StepsData> GetQueryStepsPerDay(DateTime start, DateTime end)
+        public IList<StepsDataPoint> GetQueryStepsPerDay(DateTime start, DateTime end)
         {
             return GetQuerySteps(start, end)
                     .OrderBy(x => x.Stamp)
                     .GroupBy(x => x.Stamp.Date)
-                    .Select(q => new StepsData
+                    .Select(q => new StepsDataPoint
                     {
                         Stamp = q.Key,
                         StepCount = q.Max(x => x.StepCount)
@@ -47,13 +47,13 @@
                     .ToList();
         }
 
-        public IQueryable<StepsData> GetQueryStepsAsync(DateTime start, DateTime end)
+        public IQueryable<StepsDataPoint> GetQueryStepsAsync(DateTime start, DateTime end)
         //public Task<StepsData> GetQueryStepsAsync(DateTime start, DateTime end)
         {
             var request = CreateRequest(start, end);
             var response = ExecuteRequestAsync(request);
 
-            return (IQueryable<StepsData>) response
+            return (IQueryable<StepsDataPoint>) response
                     .Result
                     .Bucket
                     .SelectMany(x => x.Dataset)
@@ -63,7 +63,7 @@
                     .SelectMany(p =>
                     {
                         return p.Value.Select(x =>
-                                        new StepsData()
+                                        new StepsDataPoint()
                                         {
                                             StepCount = x.IntVal.GetValueOrDefault(),
                                             Stamp = GoogleTimeHelper.FromNanoseconds(p.StartTimeNanos).ToDateTime()
@@ -73,12 +73,12 @@
         }
         // Do I have any gain from such a solution - or i have to use IAsyncEnumarable
         //public Task<StepsData> GetAmoutStepByDayAsync(DateTime start, DateTime end)
-        public IQueryable<StepsData> GetAmoutStepByDayAsync(DateTime start, DateTime end)
+        public IQueryable<StepsDataPoint> GetAmoutStepByDayAsync(DateTime start, DateTime end)
         {
-            return (IQueryable<StepsData>)GetQuerySteps(start, end)
+            return (IQueryable<StepsDataPoint>)GetQuerySteps(start, end)
                     .OrderBy(x => x.Stamp)
                     .GroupBy(x => x.Stamp.Date)
-                    .Select(q => new StepsData
+                    .Select(q => new StepsDataPoint
                     {
                         Stamp = q.Key,
                         StepCount = q.Sum(x => x.StepCount)

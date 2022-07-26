@@ -1,6 +1,6 @@
 ﻿
 using Application.Common.Interfaces;
-using Infrastructure.ExternalAPI.GoogleFIT;
+using Infrastructure.ExternalAPI.GoogleFIT.DataPoint;
 using Infrastructure.ExternalAPI.GoogleFIT.Interfaces;
 
 namespace PersonalManagment.Api.Controllers
@@ -39,12 +39,11 @@ namespace PersonalManagment.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet("steps")]
-        public async Task<ActionResult<IList<StepsData>>> GetStepsPerDay(DateTime start, DateTime end)
+        public async Task<ActionResult<IList<StepsDataPoint>>> GetStepsPerDay(DateTime start, DateTime end)
         {
             var list = _activeFitnessGoogleApi.GetQueryStepsPerDay(start, end);
 
-            //var vm = await Mediator.Send(new GetDirectorDetailQuery() { DirectorId = id });
-            //return vm;
+
             return Ok(list);
         }
 

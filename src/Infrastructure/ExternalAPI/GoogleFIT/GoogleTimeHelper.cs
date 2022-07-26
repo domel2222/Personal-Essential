@@ -38,6 +38,19 @@ namespace Infrastructure.ExternalAPI.GoogleFIT
             };
         }
 
+        public static GoogleTimeHelper FromMiliseconds(long? miliseconds)
+        {
+            if (miliseconds < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(miliseconds), "Must be greater than 0");
+            }
+
+            return new GoogleTimeHelper()
+            {
+                TotalMilliseconds = (long)(miliseconds.GetValueOrDefault(0))
+            };
+        }
+
         public static GoogleTimeHelper Now => FromDateTime(DateTime.Now);
 
         public GoogleTimeHelper Add(TimeSpan timeSpan)

@@ -3,6 +3,7 @@ using Application.Common.Interfaces;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
+using Infrastructure.ExternalAPI.GoogleFIT.DataPoint;
 using Infrastructure.ExternalAPI.GoogleFIT.Interfaces;
 using System.Reflection;
 
@@ -33,14 +34,14 @@ namespace Infrastructure.ExternalAPI.GoogleFIT
             });
         }
 
-        public IList<StepsData> GetQueryStepsPerDay(DateTime start, DateTime end)
+        public IList<StepsDataPoint> GetQueryStepsPerDay(DateTime start, DateTime end)
         {
             var query = new ActivityQuery(_fitnessService);
 
             return query.GetQueryStepsPerDay(start, end);
         }
 
-        public Task<StepsData> GetQueryStepsPerDayAsync(DateTime start, DateTime end)
+        public Task<StepsDataPoint> GetQueryStepsPerDayAsync(DateTime start, DateTime end)
         {
             throw new NotImplementedException();
         }

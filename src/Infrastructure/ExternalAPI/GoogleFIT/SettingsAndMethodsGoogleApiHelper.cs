@@ -1,5 +1,4 @@
 ﻿
-
 using System.Globalization;
 
 namespace Infrastructure.ExternalAPI.GoogleFIT

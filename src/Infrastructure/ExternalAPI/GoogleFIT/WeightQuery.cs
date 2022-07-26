@@ -1,4 +1,6 @@
 ﻿
+using Infrastructure.ExternalAPI.GoogleFIT.DataPoint;
+
 namespace Infrastructure.ExternalAPI.GoogleFIT
 {
     public class WeightQuery : FitnessQuery
