@@ -12,6 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddScoped<IWeightFitnessGoogleApi, FitnessGoogleConnectionInitializer>();
 builder.Services.AddScoped<IActiveFitnessGoogleApi, FitnessGoogleConnectionInitializer>();
+builder.Services.AddScoped<ISessionFitnessGoogleApi, FitnessGoogleConnectionInitializer>();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();

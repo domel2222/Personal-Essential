@@ -7,6 +7,7 @@ namespace Infrastructure.ExternalAPI.GoogleFIT.DataPoint
         public DateTime StartSession { get; init; }
         public DateTime EndSession { get; init; }
         public string? SessionName { get; init; }
+        public string? SessionId { get; init; }
 
     }
 }

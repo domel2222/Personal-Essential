@@ -51,6 +51,24 @@ namespace Infrastructure.ExternalAPI.GoogleFIT
             };
         }
 
+        public static int ConvertMillisecondsToDays(double? milliseconds)
+        {
+            return milliseconds != null ? (int)Math.Floor(TimeSpan.FromMilliseconds((double)milliseconds).TotalDays) : 0;
+        }
+
+        public static int CheckDifferenceDaysBetweenFromTwoMillisecondsResultToFloor(long? startDate, long? endDate)
+        {
+            var startCountDay = ConvertMillisecondsToDays(startDate);
+            var endCountDay = ConvertMillisecondsToDays(endDate);
+
+            if (startCountDay == 0 || endCountDay == 0)
+            {
+                return default;
+            }
+
+            return (int)Math.Floor((decimal)(endCountDay - startCountDay));
+        }
+
         public static GoogleTimeHelper Now => FromDateTime(DateTime.Now);
 
         public GoogleTimeHelper Add(TimeSpan timeSpan)

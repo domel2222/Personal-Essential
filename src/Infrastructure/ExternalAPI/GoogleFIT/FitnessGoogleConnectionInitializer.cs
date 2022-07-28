@@ -9,7 +9,7 @@ using System.Reflection;
 
 namespace Infrastructure.ExternalAPI.GoogleFIT
 {
-    public class FitnessGoogleConnectionInitializer : IWeightFitnessGoogleApi , IActiveFitnessGoogleApi
+    public class FitnessGoogleConnectionInitializer : IWeightFitnessGoogleApi , IActiveFitnessGoogleApi, ISessionFitnessGoogleApi
     {
         private UserCredential? _userCredential;
         private FitnessService _fitnessService;
@@ -53,6 +53,11 @@ namespace Infrastructure.ExternalAPI.GoogleFIT
             return query.GetQueryWeightPerDay(start, end);
         }
 
+        public IList<SessionDataPoint> GetSessionPerDay(DateTime start, DateTime end, string activityType)
+        {
+            var query = new SessionQuery(_fitnessService);
 
+            return query.GetSessionPerDay(start, end, activityType);
+        }
     }
 }

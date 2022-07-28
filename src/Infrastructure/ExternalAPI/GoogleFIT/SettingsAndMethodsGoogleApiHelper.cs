@@ -14,7 +14,6 @@ namespace Infrastructure.ExternalAPI.GoogleFIT
                 FitnessService.Scope.FitnessSleepRead,
                 FitnessService.Scope.FitnessLocationRead,
                 FitnessService.Scope.FitnessBodyRead
-
             };
         public static string ToRfc3339String(this DateTime dateTime)
         {
