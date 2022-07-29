@@ -8,7 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Activity\Command\" />
+    <Folder Include="Activity\Queries\" />
     <Folder Include="Common\Behaviours\" />
+    <Folder Include="Common\Command\" />
+    <Folder Include="Common\Exceptions\" />
+    <Folder Include="Journal\Command\" />
+    <Folder Include="Journal\Queries\" />
+    <Folder Include="SelfAssessment\Command\" />
+    <Folder Include="SelfAssessment\Queries\" />
   </ItemGroup>
 
 </Project>

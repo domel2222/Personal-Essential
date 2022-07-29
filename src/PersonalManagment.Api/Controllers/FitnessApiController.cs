@@ -6,7 +6,7 @@ using Infrastructure.ExternalAPI.GoogleFIT.Interfaces;
 namespace PersonalManagment.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]/api")]
+    [Route("api/fitness")]
     public class FitnessApiController : ControllerBase
     {
         private readonly IWeightFitnessGoogleApi _weightFitnessGoogleApi;

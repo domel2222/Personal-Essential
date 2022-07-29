@@ -14,6 +14,14 @@ builder.Services.AddScoped<IWeightFitnessGoogleApi, FitnessGoogleConnectionIniti
 builder.Services.AddScoped<IActiveFitnessGoogleApi, FitnessGoogleConnectionInitializer>();
 builder.Services.AddScoped<ISessionFitnessGoogleApi, FitnessGoogleConnectionInitializer>();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors(options => options.AddPolicy(name: "PersonalEssentialOrigins",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200")
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+        })
+);
 
 var app = builder.Build();
 
@@ -23,6 +31,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("PersonalEssentialOrigins");
 
 app.UseHttpsRedirection();
 

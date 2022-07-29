@@ -1,9 +1,4 @@
 ﻿using Infrastructure.ExternalAPI.GoogleFIT.DataPoint;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.ExternalAPI.GoogleFIT
 {
@@ -27,9 +22,7 @@ namespace Infrastructure.ExternalAPI.GoogleFIT
                                 s.StartTimeMillis, s.EndTimeMillis) == 0
                                     ? GoogleTimeHelper.FromMiliseconds(s.StartTimeMillis).ToDateTime().ToLocalTime()
                                     : GoogleTimeHelper.FromMiliseconds(s.EndTimeMillis).ToDateTime().ToLocalTime(),
-                            //            .ToDateTime().ToLocalTime()
-                            //((s.StartTimeMillis) - s.EndTimeMillis) != 0 ? GoogleTimeHelper.FromMiliseconds(s.StartTimeMillis)
-                            //            .ToDateTime().ToLocalTime()
+
                             StartSession = GoogleTimeHelper.FromMiliseconds(s.StartTimeMillis)
                                         .ToDateTime().ToLocalTime(),
                             EndSession = GoogleTimeHelper.FromMiliseconds(s.EndTimeMillis)

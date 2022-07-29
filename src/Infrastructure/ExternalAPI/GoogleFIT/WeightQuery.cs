@@ -43,6 +43,7 @@ namespace Infrastructure.ExternalAPI.GoogleFIT
                     .Select(q => new WeightDataPoint
                     {
                         Stamp = q.Key,
+                        Weight = q.Select(w => w.Weight).First(),
                         MaxWeight = q.Max(w => w.Weight),
                         MinWeight = q.Min(w => w.Weight),
 
