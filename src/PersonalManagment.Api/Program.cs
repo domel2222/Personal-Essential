@@ -17,7 +17,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCors(options => options.AddPolicy(name: "PersonalEssentialOrigins",
         policy =>
         {
-            policy.WithOrigins("http://localhost:4200")
+            policy.WithOrigins(builder.Configuration["AllowedOrigins"])
                   .AllowAnyMethod()
                   .AllowAnyHeader();
         })
