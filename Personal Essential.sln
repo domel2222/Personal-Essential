@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32519.111
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "src\Application\Application.csproj", "{AAA6231E-0F68-4542-A8B4-EED8E836B1D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "src\Application\Application.csproj", "{AAA6231E-0F68-4542-A8B4-EED8E836B1D3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{24406D26-9685-46FC-9C72-D6B9BB5E366E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\Domain\Domain.csproj", "{F57107A2-1FD4-446E-A6C4-0D00EA3B3150}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "src\Domain\Domain.csproj", "{F57107A2-1FD4-446E-A6C4-0D00EA3B3150}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\Infrastructure\Infrastructure.csproj", "{5156E18E-0C32-460B-9C31-BA550B775814}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "src\Infrastructure\Infrastructure.csproj", "{5156E18E-0C32-460B-9C31-BA550B775814}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalManagment.Api", "src\PersonalManagment.Api\PersonalManagment.Api.csproj", "{91C06C98-295C-49FD-8A28-7A5F3386E732}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalManagment.Api", "src\PersonalManagment.Api\PersonalManagment.Api.csproj", "{91C06C98-295C-49FD-8A28-7A5F3386E732}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dd", "dd", "{6327BD25-65FF-41AC-87B9-B771329B34C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
