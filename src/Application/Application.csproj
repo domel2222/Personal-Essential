@@ -8,15 +8,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Activity\Command\" />
+    <Folder Include="Activity\Commands\" />
     <Folder Include="Activity\Queries\" />
-    <Folder Include="Common\Behaviours\" />
     <Folder Include="Common\Command\" />
     <Folder Include="Common\Exceptions\" />
     <Folder Include="Journal\Command\" />
     <Folder Include="Journal\Queries\" />
-    <Folder Include="SelfAssessment\Command\" />
+    <Folder Include="SelfAssessment\Commands\" />
     <Folder Include="SelfAssessment\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.2.2" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.2.2" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
   </ItemGroup>
 
 </Project>

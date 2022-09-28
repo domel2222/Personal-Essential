@@ -10,6 +10,7 @@
   <ItemGroup>
     <Folder Include="Entities\Journal\" />
     <Folder Include="Entities\SelfAssessment\" />
+    <Folder Include="Abstractions\" />
   </ItemGroup>
 
 </Project>

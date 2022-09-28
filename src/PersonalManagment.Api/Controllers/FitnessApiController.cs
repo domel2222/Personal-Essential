@@ -58,7 +58,7 @@ namespace PersonalManagment.Api.Controllers
         public async Task<ActionResult<IList<StepsDataPoint>>> GetSessionPerDay(DateTime start, DateTime end, string activityType)
         {
             //var list = _sessionFitnessGoogleApi.GetSessionPerDay(start, end, activityType);
-            var list = _sessionFitnessGoogleApi.GetSessionPerDay(start, end, activityType);
+            var list =  _sessionFitnessGoogleApi.GetSessionPerDay(start, end, activityType);
 
             return Ok(list);
         }
