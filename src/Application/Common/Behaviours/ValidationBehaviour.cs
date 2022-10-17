@@ -7,6 +7,7 @@ using System.Windows.Input;
 using ValidationException = Application.Common.Exceptions.ValidationException;
 using FluentValidation;
 using MediatR;
+using Application.Abstractions.Messaging;
 
 namespace Application.Common.Behaviours
 {

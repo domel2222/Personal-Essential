@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Abstractions.Messaging
 {
-    public interface ICommand<out TRespoonse> : IRequest<TRespoonse>
+    public interface ICommand<out TResponse> : IRequest<TResponse>
     {
 
     }
