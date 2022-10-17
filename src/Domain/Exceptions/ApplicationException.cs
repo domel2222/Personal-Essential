@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Exeptions
+namespace Domain.Exceptions
 {
-    public abstract class ApplicationExeption : Exception
+    public abstract class ApplicationException : Exception
     {
         public string Title { get; }
-        protected ApplicationExeption(string title, string message) 
+        protected ApplicationException(string title, string message) 
             : base(message) 
         {
             Title = title;
