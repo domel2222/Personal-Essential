@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Users.Commands.CreateUser
 {
-    public record CreateUserCommand(string firstName, string lastName, string email) : ICommand<UserResponse>
+    public record CreateUserCommand(string FirstName, string LastName, string Email) : ICommand<UserResponse>
     {
 
     }

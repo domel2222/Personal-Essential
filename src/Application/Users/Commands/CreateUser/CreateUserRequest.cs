@@ -6,7 +6,5 @@ using System.Threading.Tasks;
 
 namespace Application.Users.Commands.CreateUser
 {
-
         public sealed record CreateUserRequest(string FirstName, string LastName, string email);
-
 }
