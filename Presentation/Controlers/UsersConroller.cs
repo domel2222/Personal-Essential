@@ -28,7 +28,7 @@ namespace Presentation.Controlers
 
             var user = await _sender.Send(command, cancellationToken);
 
-            return CreatedAtAction("CreateUser", user);
+            return (IAsyncResult)CreatedAtAction("CreateUser", user);
         }
     }
 }

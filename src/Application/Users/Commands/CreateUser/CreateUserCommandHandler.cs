@@ -28,7 +28,7 @@ namespace Application.Users.Commands.CreateUser
             _userRepository.Insert(user);
 
             await _unitOfwork
-            return  
+            return;
         }
     }
 }
