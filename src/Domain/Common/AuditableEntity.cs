@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace Domain.Common
 {
-    public class AuditableEntity
+    public abstract class AuditableEntity
     {
         public Guid Id { get; set; }
-        public string? CreatedBy { get; set; }
+        public Guid CreatedBy { get; set; } //guid 
         public DateTime CreatedDate { get; set; }
-        public string? ModifiedBy { get; set; }
-        public DateTime? ModifiedDate { get; set; }
-        public string? InactivatedBy { get; set; }
-        public DateTime? InactivatedDate { get; set; }
-
+        public Guid ModifiedBy { get; set; }
+        public DateTime ModifiedDate { get; set; }
+        public Guid? InactivatedBy { get; set; }
+        public DateTime? InactivatedDate { get; set; } 
 
     }
 }

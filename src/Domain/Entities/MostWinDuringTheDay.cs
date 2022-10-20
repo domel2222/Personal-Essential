@@ -10,6 +10,9 @@ namespace Domain.Entities
     public class MostWinDuringTheDay : AuditableEntity
     {
            public string? Message { get; set; }
-           public Strenghts? Strenghts { get; set; }
+           public Strenght? Strenghts { get; set; }
+
+           public Journal? Journal { get; set; }
+           public Guid JournalId { get; set; }
     }
 }

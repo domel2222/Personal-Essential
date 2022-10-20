@@ -13,7 +13,7 @@ namespace Domain.Entities
         public string? LastName { get; set;}
         public string? Email { get; set;}
 
-        public IEnumerable<SelfAssessmentValue> SelfAssessmentValues { get; set;} = new List<SelfAssessmentValue>();
+        public IEnumerable<SelfAssessmentValue> SelfAssessmentValues { get; set; } =  new List<SelfAssessmentValue>();
         public IEnumerable<Journal> Journals { get; set;} = new List<Journal>();
 
     }
