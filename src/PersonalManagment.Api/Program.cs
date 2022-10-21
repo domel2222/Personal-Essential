@@ -1,4 +1,4 @@
-using Application.Common.Interfaces;
+﻿using Application.Common.Interfaces;
 using Infrastructure.ExternalAPI.GoogleFIT;
 using Infrastructure.ExternalAPI.GoogleFIT.Interfaces;
 using Infrastructure.Persistence;
@@ -10,21 +10,23 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-//var presentationAssembly = typeof(Presentation.AssemblyReference).Assembly;
+var presentationAssembly = typeof(Presentation.AssemblyReference).Assembly;
 
-//builder.Services.AddControllers().AddApplicationPart(presentationAssembly);
+builder.Services.AddControllers().AddApplicationPart(presentationAssembly);
+
+builder.Services.AddControllers();
 
 
-//builder.Services.AddSwaggerGen(c =>
-//{
-//    string presentationDocumentationFile = $"{presentationAssembly.GetName().Name}.xml";
+builder.Services.AddSwaggerGen(c =>
+{
+    string presentationDocumentationFile = $"{presentationAssembly.GetName().Name}.xml";
 
-//    string presentationDocumentationFilePath = Path.Combine(AppContext.BaseDirectory, presentationDocumentationFile);
+    string presentationDocumentationFilePath = Path.Combine(AppContext.BaseDirectory, presentationDocumentationFile);
 
-//    c.IncludeXmlComments(presentationDocumentationFilePath);
+    c.IncludeXmlComments(presentationDocumentationFilePath);
 
-//    c.SwaggerDoc("v1", new OpenApiInfo { Title = "PersonalEssential", Version = "v1" });
-//});
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Personal Essential Tracker", Version = "v1" });
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 

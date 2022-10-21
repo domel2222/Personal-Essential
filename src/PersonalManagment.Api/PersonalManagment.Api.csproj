@@ -4,6 +4,8 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>G:\old_files\projectCSharp\PersonalOrganizerAndTracker\Personal Essential\src\Presentation\Presentation.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,7 +14,9 @@
 
   <ItemGroup>
     <!--<ProjectReference Include="..\Presentation\Presentation.csproj" />-->
+    <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\Presentation\Presentation.csproj" />
   </ItemGroup>
 
 </Project>
