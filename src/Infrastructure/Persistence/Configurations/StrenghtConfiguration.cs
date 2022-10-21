@@ -29,7 +29,7 @@ namespace Infrastructure.Persistence.Configurations
                 new Strenght() { Name = "Activator" },
                 new Strenght() { Name = "Futuristic" },
                 new Strenght() { Name = "Connectedness" },
-                new Strenght() { Name = "Relator" }
+                new Strenght() { Name = "Relator" }                       
                 );
         }
     }

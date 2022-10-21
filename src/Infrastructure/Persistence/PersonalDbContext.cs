@@ -3,37 +3,31 @@ using Domain.Common;
 using Domain.Entities;
 using Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Persistence
 {
     public class PersonalDbContext : DbContext
     {
-
         private readonly IDateTime _dateTime;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICurrentUserService _currentUserService;
-        public PersonalDbContext(DbContextOptions<PersonalDbContext> options, IDateTime dateTime, IUnitOfWork unitOfWork, ICurrentUserService currentUserService) : base (options)
+
+        public PersonalDbContext(DbContextOptions<PersonalDbContext> options, IDateTime dateTime, IUnitOfWork unitOfWork, ICurrentUserService currentUserService) : base(options)
         {
             _dateTime = dateTime;
             _unitOfWork = unitOfWork;
             _currentUserService = currentUserService;
         }
 
-        public DbSet<Journal> Journals { get; set; }
-        public DbSet<Strenght> Strenghts { get; set; }
-        public DbSet<MostWinDuringTheDay> MostWins { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<SelfAssessmentValue> SelfAssessmentValues { get; set;}
-
+        public DbSet<Journal>? Journals { get; set; }
+        public DbSet<Strenght>? Strenghts { get; set; }
+        public DbSet<MostWinDuringTheDay>? MostWins { get; set; }
+        public DbSet<User>? Users { get; set; }
+        public DbSet<SelfAssessmentValue>? SelfAssessmentValues { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
@@ -60,7 +54,6 @@ namespace Infrastructure.Persistence
                         entry.Entity.InactivatedDate = _dateTime.Now;
                         entry.State = EntityState.Modified;
                         break;
-
                 }
             }
             return base.SaveChangesAsync(cancellationToken);

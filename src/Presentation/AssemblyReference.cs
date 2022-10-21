@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Presentation
 {
-    public static class AssemblyReference
+    public class AssemblyReference
     {
 
     }

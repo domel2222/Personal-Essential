@@ -15,20 +15,25 @@ namespace Application.Users.Commands.CreateUser
         {
 
         }
-        public async Task<UserResponse> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+
+        public Task<UserResponse> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-
-            var user = new User
-            {
-                FirstName = request.FirstName,
-                LastName = request.LastName,
-                Email = request.Email,
-            };
-
-            _userRepository.Insert(user);
-
-            await _unitOfwork
-            return;
+            throw new NotImplementedException();
         }
+        //public async Task<UserResponse> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+        //{
+
+        //    var user = new User
+        //    {
+        //        FirstName = request.FirstName,
+        //        LastName = request.LastName,
+        //        Email = request.Email,
+        //    };
+
+        //    _userRepository.Insert(user);
+
+        //    await _unitOfwork
+        //    return;
+        //}
     }
 }
