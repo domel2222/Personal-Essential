@@ -82,7 +82,6 @@
                     {
                         Stamp = q.Key,
                         StepCount = q.Sum(x => x.StepCount)
-
                     });
         }
     }
