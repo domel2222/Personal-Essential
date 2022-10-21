@@ -17,8 +17,8 @@ namespace Domain.Entities
         public double CaloriesResult { get; set; }
         public double EnglishTimeResult { get; set; }
         public double AudiobookReadingResult { get; set; }
-        public double dailyResult { get; set; }
-        public DateOnly assesmentDate { get; set; }
+        public double DailyResult { get; set; }
+        public DateOnly AssesmentDate { get; set; }
 
         public User User { get; set; }
         public Guid UserId { get; set; }

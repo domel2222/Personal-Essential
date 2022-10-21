@@ -16,7 +16,7 @@ namespace Domain.Entities
         public User? User { get; set;}
         public Guid UserId { get; set;}
 
-        public SelfAssessmentValue? SelfAssessmentValue { get; set;}
+        public IEnumerable<SelfAssessmentValue> SelfAssessmentsValue { get; set;} = new List<SelfAssessmentValue>();
         public IEnumerable<MostWinDuringTheDay> MostWinsDuringTheDay { get; set; } = new List<MostWinDuringTheDay>();
     }
 }

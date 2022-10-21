@@ -10,7 +10,6 @@ namespace Domain.Entities
     public class Strenght : AuditableEntity
     {
         public string? Name { get; set; }
-        public MostWinDuringTheDay? MostWinDuringTheDay { get; set; }
-        public Guid MostWinDuringTheDayId { get; set; }
+        public IEnumerable<MostWinDuringTheDay> MostWinsDuringTheDay { get; set; } = new List<MostWinDuringTheDay>();
     }
 }
