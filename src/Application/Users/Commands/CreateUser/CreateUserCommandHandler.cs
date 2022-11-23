@@ -29,11 +29,11 @@ namespace Application.Users.Commands.CreateUser
         //        LastName = request.LastName,
         //        Email = request.Email,
         //    };
+        //    UserResponse userResponse = new UserResponse(user.FirstName, user.LastName, user.Email);//to test
+        //    //_userRepository.Insert(user);
 
-        //    _userRepository.Insert(user);
-
-        //    await _unitOfwork
-        //    return;
+        //    //await _unitOfwork
+        //    return userResponse;
         //}
     }
 }

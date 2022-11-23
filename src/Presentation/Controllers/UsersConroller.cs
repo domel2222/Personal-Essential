@@ -30,6 +30,7 @@ namespace Presentation.Controlers
 
         [HttpPost]
         [ProducesResponseType(typeof(UserResponse), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IAsyncResult> CreateUser([FromBody] CreateUserRequest userRequest, CancellationToken cancellationToken)
         {
             var command = userRequest.Adapt<CreateUserCommand>();
