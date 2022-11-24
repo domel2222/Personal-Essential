@@ -96,7 +96,6 @@ namespace ArchitectureTests
                 .GetResult();
             // assert
             result.IsSuccessful.Should().BeTrue();
-
         }
 
         [Fact]

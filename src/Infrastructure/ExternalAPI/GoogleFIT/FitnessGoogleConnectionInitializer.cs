@@ -5,6 +5,7 @@ using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using Infrastructure.ExternalAPI.GoogleFIT.DataPoint;
 using Infrastructure.ExternalAPI.GoogleFIT.Interfaces;
+using Infrastructure.KeyVault;
 using System.Reflection;
 
 namespace Infrastructure.ExternalAPI.GoogleFIT
@@ -18,10 +19,14 @@ namespace Infrastructure.ExternalAPI.GoogleFIT
         {
             _userCredential = GoogleWebAuthorizationBroker.AuthorizeAsync(
                 new ClientSecrets
-              {
-                  ClientId = SettingsAndMethodsGoogleApiHelper.clientId,
-                  ClientSecret = SettingsAndMethodsGoogleApiHelper.clientSecret,
-              },
+                {
+                    ClientId = (new KeyVaultService()
+                                    .GetSecretApiKey(SettingsAndMethodsGoogleApiHelper.clientIdName)).Result,
+                    ClientSecret = (new KeyVaultService()
+                                    .GetSecretApiKey(SettingsAndMethodsGoogleApiHelper.clientSecretName)).Result,
+                    //ClientId = SettingsAndMethodsGoogleApiHelper.clientId,
+                    //ClientSecret = SettingsAndMethodsGoogleApiHelper.clientSecret,
+                },
                   SettingsAndMethodsGoogleApiHelper.scopes,
                   "user",
                   CancellationToken.None,

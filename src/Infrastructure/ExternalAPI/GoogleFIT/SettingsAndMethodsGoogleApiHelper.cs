@@ -1,11 +1,16 @@
-﻿using System.Globalization;
+﻿using Infrastructure.KeyVault;
+using System.Globalization;
 
 namespace Infrastructure.ExternalAPI.GoogleFIT
 {
     public static class SettingsAndMethodsGoogleApiHelper
     {
-        public const string clientId = "508951185222-s43tqnlita9f75r07d5295nhjkigih4m.apps.googleusercontent.com";
-        public const string clientSecret = "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";
+
+        // in the futere will be provide as environmental variables from Azure //
+        public const string clientIdName = "clienIdFitnessApi";
+        public const string clientSecretName = "clientSecretFitnessApi";
+        //public const string clientId = (new KeyVaultService().GetSecretApiKey(clientIdName)).Result;
+        //var clientSecret = new KeyVaultService().GetSecretApiKey(clientSecretName);
 
         public static string[] scopes = new string[]
             {
