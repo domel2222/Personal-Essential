@@ -1,7 +1,4 @@
-﻿
-using static System.Net.Mime.MediaTypeNames;
-
-namespace ArchitectureTests
+﻿namespace ArchitectureTests
 {
     public class ArchitectureTests
     {
