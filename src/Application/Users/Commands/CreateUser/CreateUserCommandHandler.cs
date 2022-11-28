@@ -1,6 +1,7 @@
 ﻿using Application.Abstractions.Messaging;
 using Application.Contracts;
 using Domain.Entities;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +11,23 @@ using System.Threading.Tasks;
 namespace Application.Users.Commands.CreateUser
 {
     public class CreateUserCommandHandler : ICommandHandler<CreateUserCommand, UserResponse>
+    //public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand>
     {
         public CreateUserCommandHandler()
         {
 
         }
 
-        public Task<UserResponse> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+        //public async Task<Unit> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+        //{
+        //    return Unit.Value;
+        //}
+
+        public async Task<UserResponse> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
+
         //public async Task<UserResponse> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         //{
 

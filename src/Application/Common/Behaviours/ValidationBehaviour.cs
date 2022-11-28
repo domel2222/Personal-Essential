@@ -48,7 +48,6 @@ namespace Application.Common.Behaviours
                                                   })
                                                   .ToDictionary(x => x.Key, x => x.Values);
 
-
             if (errorsDictionaray.Any())
             {
                 throw new ValidationException(errorsDictionaray);

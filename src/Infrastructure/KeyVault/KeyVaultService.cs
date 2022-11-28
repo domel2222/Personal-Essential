@@ -16,7 +16,6 @@ namespace Infrastructure.KeyVault
             return secretResponse.Value.Value;
 
         }
-
         private SecretClient GetSecretClient()
         {
             var keyVaultUri = "https://personaltestkeyvault.vault.azure.net/";
