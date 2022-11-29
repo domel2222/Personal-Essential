@@ -38,6 +38,37 @@ namespace Infrastructure.ExternalAPI.GoogleFIT
             };
         }
 
+        public static GoogleTimeHelper FromMiliseconds(long? miliseconds)
+        {
+            if (miliseconds < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(miliseconds), "Must be greater than 0");
+            }
+
+            return new GoogleTimeHelper()
+            {
+                TotalMilliseconds = (long)(miliseconds.GetValueOrDefault(0))
+            };
+        }
+
+        public static int ConvertMillisecondsToDays(double? milliseconds)
+        {
+            return milliseconds != null ? (int)Math.Floor(TimeSpan.FromMilliseconds((double)milliseconds).TotalDays) : 0;
+        }
+
+        public static int CheckDifferenceDaysBetweenFromTwoMillisecondsResultToFloor(long? startDate, long? endDate)
+        {
+            var startCountDay = ConvertMillisecondsToDays(startDate);
+            var endCountDay = ConvertMillisecondsToDays(endDate);
+
+            if (startCountDay == 0 || endCountDay == 0)
+            {
+                return default;
+            }
+
+            return (int)Math.Floor((decimal)(endCountDay - startCountDay));
+        }
+
         public static GoogleTimeHelper Now => FromDateTime(DateTime.Now);
 
         public GoogleTimeHelper Add(TimeSpan timeSpan)

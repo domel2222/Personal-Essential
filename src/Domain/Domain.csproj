@@ -8,11 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Common\Behaviours\" />
-    <Folder Include="Journal\Command\" />
-    <Folder Include="Journal\Queries\" />
-    <Folder Include="SelfAssessment\Command\" />
-    <Folder Include="SelfAssessment\Queries\" />
+    <Folder Include="Entities\Journal\" />
+    <Folder Include="Entities\SelfAssessment\" />
   </ItemGroup>
 
 </Project>
