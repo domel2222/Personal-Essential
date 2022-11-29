@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Application.Common.Interfaces;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -11,6 +12,7 @@ namespace Infrastructure.Persistence.Configurations
 {
     public class StrenghtConfiguration : IEntityTypeConfiguration<Strenght>
     {
+        private Guid guidUser = new Guid("af855ff4-c3e3-4a5e-a5a8-6874bd2f7a31");
         public void Configure(EntityTypeBuilder<Strenght> builder)
         {
             builder.Property(s => s.Name).HasColumnType("nvarchar(100)");
@@ -18,19 +20,96 @@ namespace Infrastructure.Persistence.Configurations
             builder.HasMany(s => s.MostWinsDuringTheDay)
                    .WithOne(s => s.Strenght)
                    .HasForeignKey(s => s.StrenghtId);
-
+            //"CreatedBy", "CreatedDate", "InactivatedBy", "InactivatedDate", "ModifiedBy", "ModifiedDate"
             builder.HasData(
-                new Strenght() {Id = Guid.NewGuid(), Name = "Responsibility" },
-                new Strenght() {Id = Guid.NewGuid(), Name = "Achiever" },
-                new Strenght() {Id = Guid.NewGuid(), Name = "Focus" },
-                new Strenght() {Id = Guid.NewGuid(), Name = "Learner" },
-                new Strenght() {Id = Guid.NewGuid(), Name = "Individualization" },
-                new Strenght() {Id = Guid.NewGuid(), Name = "Self-Assurance" },
-                new Strenght() {Id = Guid.NewGuid(), Name = "Activator" },
-                new Strenght() {Id = Guid.NewGuid(), Name = "Futuristic" },
-                new Strenght() {Id = Guid.NewGuid(), Name = "Connectedness" },
-                new Strenght() {Id = Guid.NewGuid(), Name = "Relator" }                       
-                );
+                new Strenght()
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedBy = guidUser,
+                    CreatedDate = DateTime.Now,
+                    ModifiedBy = guidUser,
+                    ModifiedDate = DateTime.Now,
+                    Name = "Responsibility"
+                },
+                new Strenght()
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedBy = guidUser,
+                    CreatedDate = DateTime.Now,
+                    ModifiedBy = guidUser,
+                    ModifiedDate = DateTime.Now,
+                    Name = "Achiever"
+                },
+                new Strenght()
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedBy = guidUser,
+                    CreatedDate = DateTime.Now,
+                    ModifiedBy = guidUser,
+                    ModifiedDate = DateTime.Now,
+                    Name = "Focus"
+                },
+                new Strenght()
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedBy = guidUser,
+                    CreatedDate = DateTime.Now,
+                    ModifiedBy = guidUser,
+                    ModifiedDate = DateTime.Now,
+                    Name = "Learner"
+                },
+                new Strenght()
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedBy = guidUser,
+                    CreatedDate = DateTime.Now,
+                    ModifiedBy = guidUser,
+                    ModifiedDate = DateTime.Now,
+                    Name = "Individualization"
+                },
+                new Strenght()
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedBy = guidUser,
+                    CreatedDate = DateTime.Now,
+                    ModifiedBy = guidUser,
+                    ModifiedDate = DateTime.Now,
+                    Name = "Self-Assurance"
+                },
+                new Strenght()
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedBy = guidUser,
+                    CreatedDate = DateTime.Now,
+                    ModifiedBy = guidUser,
+                    ModifiedDate = DateTime.Now,
+                    Name = "Activator"
+                },
+                new Strenght()
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedBy = guidUser,
+                    CreatedDate = DateTime.Now,
+                    ModifiedBy = guidUser,
+                    ModifiedDate = DateTime.Now,
+                    Name = "Futuristic"
+                }, new Strenght()
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedBy = guidUser,
+                    CreatedDate = DateTime.Now,
+                    ModifiedBy = guidUser,
+                    ModifiedDate = DateTime.Now,
+                    Name = "Connectedness"
+                }, new Strenght()
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedBy = guidUser,
+                    CreatedDate = DateTime.Now,
+                    ModifiedBy = guidUser,
+                    ModifiedDate = DateTime.Now,
+                    Name = "Relator"
+                });
         }
     }
 }

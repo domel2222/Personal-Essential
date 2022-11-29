@@ -21,10 +21,10 @@ namespace Domain.Entities
         public double DailyResult { get; set; }
         public DateTime AssesmentDate { get; set; }
 
-        public User User { get; set; }
+        public User? User { get; set; }
         public Guid UserId { get; set; }
 
-        public Journal Journal { get; set; }
+        public Journal? Journal { get; set; }
         public Guid JournalId { get; set; }
     }
 }

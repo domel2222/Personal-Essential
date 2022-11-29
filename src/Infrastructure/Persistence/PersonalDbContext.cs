@@ -38,6 +38,8 @@ namespace Infrastructure.Persistence
                         entry.Entity.Id = Guid.NewGuid();
                         entry.Entity.CreatedBy = _currentUserService.guidUser;
                         entry.Entity.CreatedDate = _dateTime.Now;
+                        entry.Entity.ModifiedBy = _currentUserService.guidUser;
+                        entry.Entity.ModifiedDate = _dateTime.Now;
                         break;
 
                     case EntityState.Modified:

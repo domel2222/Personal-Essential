@@ -14,6 +14,10 @@ namespace Infrastructure.Persistence.Configurations
                 new User
                 {
                     Id = guidUser,
+                    CreatedBy = guidUser,
+                    CreatedDate = DateTime.Now,
+                    ModifiedBy = guidUser,
+                    ModifiedDate = DateTime.Now,
                     FirstName = "Dominik",
                     LastName = "Wikliński",
                     Email = "domel2222@gmail.com"
@@ -36,7 +40,9 @@ namespace Infrastructure.Persistence.Configurations
 
             builder.HasMany(s => s.SelfAssessmentValues)
                     .WithOne(s => s.User)
-                    .HasForeignKey(s => s.UserId);
+                    .HasForeignKey(s => s.UserId)
+                    .OnDelete(DeleteBehavior.ClientCascade);
+           
         }
     }
 }

@@ -22,8 +22,8 @@ namespace Infrastructure.Persistence.Configurations
 
             builder.HasMany(j => j.SelfAssessmentsValue)
                     .WithOne(j => j.Journal)
-                    .HasForeignKey(j => j.JournalId);
-
+                    .HasForeignKey(j => j.JournalId)
+                    .OnDelete(DeleteBehavior.ClientCascade);
         }
     }
 }
