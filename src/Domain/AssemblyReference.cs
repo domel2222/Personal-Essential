@@ -1,7 +1,7 @@
 ﻿
 namespace Domain
 {
-    public class AssemblyReference
+    public sealed record AssemblyReference
     {
 
     }

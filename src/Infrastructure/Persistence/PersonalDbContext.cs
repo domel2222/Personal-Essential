@@ -30,7 +30,7 @@ namespace Infrastructure.Persistence
             modelBuilder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
         }
 
-        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
         {
             foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
             {
@@ -56,7 +56,7 @@ namespace Infrastructure.Persistence
                         break;
                 }
             }
-            return base.SaveChangesAsync(cancellationToken);
+            return await base.SaveChangesAsync(cancellationToken);
         }
     }
 }

@@ -26,8 +26,6 @@ namespace Presentation.Controlers
             _sender = sender;
         }
 
-
-
         [HttpPost]
         [ProducesResponseType(typeof(UserResponse), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
