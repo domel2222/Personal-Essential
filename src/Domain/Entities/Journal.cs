@@ -11,7 +11,7 @@ namespace Domain.Entities
     {
         public string? Title { get; set;}
         public string? Text { get; set;}
-        public DateOnly DiaryDate { get; set;}
+        public DateTime DiaryDate { get; set;}
        
         public User? User { get; set;}
         public Guid UserId { get; set;}

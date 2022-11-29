@@ -20,16 +20,16 @@ namespace Infrastructure.Persistence.Configurations
                    .HasForeignKey(s => s.StrenghtId);
 
             builder.HasData(
-                new Strenght() { Name = "Responsibility" },
-                new Strenght() { Name = "Achiever" },
-                new Strenght() { Name = "Focus" },
-                new Strenght() { Name = "Learner" },
-                new Strenght() { Name = "Individualization" },
-                new Strenght() { Name = "Self-Assurance" },
-                new Strenght() { Name = "Activator" },
-                new Strenght() { Name = "Futuristic" },
-                new Strenght() { Name = "Connectedness" },
-                new Strenght() { Name = "Relator" }                       
+                new Strenght() {Id = Guid.NewGuid(), Name = "Responsibility" },
+                new Strenght() {Id = Guid.NewGuid(), Name = "Achiever" },
+                new Strenght() {Id = Guid.NewGuid(), Name = "Focus" },
+                new Strenght() {Id = Guid.NewGuid(), Name = "Learner" },
+                new Strenght() {Id = Guid.NewGuid(), Name = "Individualization" },
+                new Strenght() {Id = Guid.NewGuid(), Name = "Self-Assurance" },
+                new Strenght() {Id = Guid.NewGuid(), Name = "Activator" },
+                new Strenght() {Id = Guid.NewGuid(), Name = "Futuristic" },
+                new Strenght() {Id = Guid.NewGuid(), Name = "Connectedness" },
+                new Strenght() {Id = Guid.NewGuid(), Name = "Relator" }                       
                 );
         }
     }

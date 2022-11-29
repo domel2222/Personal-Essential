@@ -4,6 +4,8 @@ using Infrastructure.ExternalAPI.GoogleFIT;
 using Infrastructure.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Domain.Repositories;
+using Infrastructure.Persistence.Repositories;
 
 namespace Infrastructure
 {
@@ -15,6 +17,7 @@ namespace Infrastructure
             services.AddScoped<IWeightFitnessGoogleApi, FitnessGoogleConnectionInitializer>();
             services.AddScoped<IActiveFitnessGoogleApi, FitnessGoogleConnectionInitializer>();
             services.AddScoped<ISessionFitnessGoogleApi, FitnessGoogleConnectionInitializer>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             return services;
         }

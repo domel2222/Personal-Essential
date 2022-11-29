@@ -5,7 +5,7 @@ using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using Infrastructure.ExternalAPI.GoogleFIT.DataPoint;
 using Infrastructure.ExternalAPI.GoogleFIT.Interfaces;
-using Infrastructure.KeyVault;
+using Infrastructure.Services;
 using System.Reflection;
 
 namespace Infrastructure.ExternalAPI.GoogleFIT

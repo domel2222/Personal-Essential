@@ -1,10 +1,13 @@
 ﻿
 using Application;
+using Application.Common.Interfaces;
 using Infrastructure;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.OpenApi.Models;
+using PersonalManagment.Api.Services;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -36,6 +39,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
 
+builder.Services.TryAddScoped(typeof(ICurrentUserService), typeof(CurrentUserService));
+//builder.Services.AddSingleton<ICurrentUserService, CurrentUserService>();
+//builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
 builder.Services.AddSwaggerGen();

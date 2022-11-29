@@ -1,5 +1,4 @@
-﻿using Infrastructure.KeyVault;
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace Infrastructure.ExternalAPI.GoogleFIT
 {

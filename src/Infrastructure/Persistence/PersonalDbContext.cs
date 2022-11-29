@@ -1,7 +1,7 @@
 ﻿using Application.Common.Interfaces;
 using Domain.Common;
 using Domain.Entities;
-using Domain.Repositories;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence
@@ -9,13 +9,11 @@ namespace Infrastructure.Persistence
     public class PersonalDbContext : DbContext
     {
         private readonly IDateTime _dateTime;
-        private readonly IUnitOfWork _unitOfWork;
         private readonly ICurrentUserService _currentUserService;
 
-        public PersonalDbContext(DbContextOptions<PersonalDbContext> options, IDateTime dateTime, IUnitOfWork unitOfWork, ICurrentUserService currentUserService) : base(options)
+        public PersonalDbContext(DbContextOptions<PersonalDbContext> options, IDateTime dateTime, ICurrentUserService currentUserService) : base(options)
         {
             _dateTime = dateTime;
-            _unitOfWork = unitOfWork;
             _currentUserService = currentUserService;
         }
 

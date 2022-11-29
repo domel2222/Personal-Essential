@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class SelfAssessmentValue
+    public class SelfAssessmentValue : AuditableEntity
     {
         public double DeepWorkResult { get; set; }
         public double AffirmationResult { get; set; }
@@ -18,7 +19,7 @@ namespace Domain.Entities
         public double EnglishTimeResult { get; set; }
         public double AudiobookReadingResult { get; set; }
         public double DailyResult { get; set; }
-        public DateOnly AssesmentDate { get; set; }
+        public DateTime AssesmentDate { get; set; }
 
         public User User { get; set; }
         public Guid UserId { get; set; }
