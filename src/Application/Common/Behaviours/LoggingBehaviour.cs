@@ -1,7 +1,4 @@
-﻿using MediatR.Pipeline;
-using Microsoft.Extensions.Logging;
-using System.Runtime.CompilerServices;
-
+﻿
 namespace Application.Common.Behaviours
 {
     public class LoggingBehaviour<TRequest> : IRequestPreProcessor<TRequest>//reading about it 

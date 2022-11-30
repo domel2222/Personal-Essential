@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-using System.Linq;
-
+﻿
 namespace Application.Users.Commands.CreateUser
 {
     public sealed class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>

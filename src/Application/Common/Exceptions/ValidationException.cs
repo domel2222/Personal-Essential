@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿
 using ApplicationException = Domain.Exceptions.ApplicationException;
 
 namespace Application.Common.Exceptions
