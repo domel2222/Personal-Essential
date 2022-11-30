@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Application.Contracts;
 using Application.Users.Commands.CreateUser;
 using MediatR;
 using Mapster;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Application.Contracts.Users;
+
 namespace Presentation.Controlers
 {
     [ApiController]

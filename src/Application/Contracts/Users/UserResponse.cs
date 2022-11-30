@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Contracts
+namespace Application.Contracts.Users
 {
     public sealed record UserResponse(string FirstName, string LastName, string Email)
     {
