@@ -1,6 +1,4 @@
 ﻿
-
-
 namespace Application.Users.Commands.CreateUser
 {
     public class CreateUserCommandHandler : ICommandHandler<CreateUserCommand, UserResponse>
