@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Contracts
 {
-    public sealed record UserResponse(string FirstName, string LastName, string email)
+    public sealed record UserResponse(string FirstName, string LastName, string Email)
     {
 
     }
