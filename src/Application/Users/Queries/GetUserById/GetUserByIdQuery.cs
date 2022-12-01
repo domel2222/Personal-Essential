@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Application.Users.Queries.GetUserById
+﻿namespace Application.Users.Queries.GetUserById
 {
     public sealed record GetUserByIdQuery(Guid UserId) : IQuery<UserResponse>;
-
 }
