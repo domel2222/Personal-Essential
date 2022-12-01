@@ -4,7 +4,7 @@
     {
         public UpdateUserCommandValidator()
         {
-            RuleFor(x => x.userId)
+            RuleFor(x => x.UserId)
                                                     .NotEmpty();
 
             RuleFor(x => x.FirstName)

@@ -13,11 +13,11 @@
 
         public async Task<Unit> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
-            var user = await _userRepository.GetUserByIdAsync(request.userId, cancellationToken);
+            var user = await _userRepository.GetUserByIdAsync(request.UserId, cancellationToken);
 
             if (user == null)
             {
-                throw new UserNotFoundException(request.userId);
+                throw new UserNotFoundException(request.UserId);
             }
 
             user.FirstName = request.FirstName;
