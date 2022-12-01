@@ -16,7 +16,6 @@
     <Folder Include="Journal\Queries\" />
     <Folder Include="SelfAssessment\Commands\" />
     <Folder Include="SelfAssessment\Queries\" />
-    <Folder Include="Users\Queries\" />
   </ItemGroup>
 
   <ItemGroup>

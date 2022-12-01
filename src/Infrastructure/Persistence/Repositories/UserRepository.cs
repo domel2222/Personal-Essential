@@ -29,5 +29,9 @@ namespace Infrastructure.Persistence.Repositories
         {
             _personalDbContext.Users.Remove(user);
         }
+        public void Update(User user) 
+        { 
+
+        }
     }
 }

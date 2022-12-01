@@ -3,13 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Application.Users.Commands.CreateUser;
-using MediatR;
-using Mapster;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Application.Contracts.Users;
-
 namespace Presentation.Controlers
 {
     [ApiController]
@@ -30,13 +23,13 @@ namespace Presentation.Controlers
         [HttpPost]
         [ProducesResponseType(typeof(UserResponse), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IAsyncResult> CreateUser([FromBody] CreateUserRequest userRequest, CancellationToken cancellationToken)
+        public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest userRequest, CancellationToken cancellationToken)
         {
             var command = userRequest.Adapt<CreateUserCommand>();
 
             var user = await _sender.Send(command, cancellationToken);
 
-            return (IAsyncResult)Created("/1", user);
+            return Created("/1", user);
         }
 
 
