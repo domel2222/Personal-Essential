@@ -1,22 +1,18 @@
-﻿using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Application.Users.Commands.CreateUser
 {
     public sealed class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
     {
-        public CreateUserCommandValidator()
+        public CreateUserCommandValidator(IUserRepository userRepository)
         {
             RuleFor(x => x.FirstName)
                                                      .NotEmpty()
+                                                     .WithMessage("First should not be null or empty!")
                                                      .MaximumLength(100);
 
             RuleFor(x => x.LastName)
                                                     .NotEmpty()
+                                                    .WithMessage("LastName should not be null or empty!")
                                                     .MaximumLength(100);
 
             RuleFor(x => x.Email)
@@ -24,6 +20,14 @@ namespace Application.Users.Commands.CreateUser
                                                         .WithMessage("Email address is required.")
                                                     .EmailAddress()
                                                         .WithMessage("A valid email address is required.");
+
+            RuleFor(x => x.Email).Custom((email, context) =>
+            {
+                if (userRepository.CheckEmail(email))
+                {
+                    context.AddFailure("Email :", "Please insert another email this is taken");
+                }
+}); 
         }
     }
 }

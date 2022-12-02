@@ -1,8 +1,6 @@
-﻿using Application.Common.Behaviours;
-using FluentValidation;
-using MediatR;
-using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
+﻿
+using Application.Users.Commands.CreateUser;
+using Application.Users.Commands.UpdateUser;
 
 namespace Application
 {
@@ -12,9 +10,7 @@ namespace Application
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
-
-            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>));
+            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviourSecond<,>));
 
             return services;
         }

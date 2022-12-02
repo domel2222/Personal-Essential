@@ -5,7 +5,8 @@
         public Guid Id { get; set; }
 
         //public Guid Id { get; private init; }
-        public Guid CreatedBy { get; set; } //guid 
+        public Guid CreatedBy { get; set; } //guid
+
         public DateTime CreatedDate { get; set; }
         public Guid ModifiedBy { get; set; }
         public DateTime ModifiedDate { get; set; }
@@ -41,7 +42,7 @@
         {
             if (obj is null)
             {
-                return false; 
+                return false;
             }
 
             if (obj.GetType() != GetType())
@@ -59,7 +60,7 @@
 
         public override int GetHashCode()
         {
-            return Id.GetHashCode() * 41; 
+            return Id.GetHashCode() * 41;
         }
     }
 }
