@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Persistence.Repositories
 {
-    internal class JournalRepository : IJournalRepository
+    public sealed class JournalRepository : IJournalRepository
     {
         private readonly PersonalDbContext _personalDbContext;
 

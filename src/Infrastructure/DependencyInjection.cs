@@ -9,7 +9,9 @@
             services.AddScoped<IActiveFitnessGoogleApi, FitnessGoogleConnectionInitializer>();
             services.AddScoped<ISessionFitnessGoogleApi, FitnessGoogleConnectionInitializer>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IJournalRepository, JournalRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            
 
             return services;
         }
