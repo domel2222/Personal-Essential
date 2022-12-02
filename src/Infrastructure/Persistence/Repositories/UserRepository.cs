@@ -10,6 +10,11 @@ namespace Infrastructure.Persistence.Repositories
 
         public UserRepository(PersonalDbContext personalDbContext) => _personalDbContext = personalDbContext;
 
+        public bool CheckEmail(string email)
+        {
+            return _personalDbContext.Users.Any(u => u.Email == email);
+        }
+
         public async Task<IEnumerable<User>> GetAllUserAsync(CancellationToken cancellationToken = default)
         {
             return await _personalDbContext.Users.ToListAsync(cancellationToken);

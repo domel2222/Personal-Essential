@@ -1,13 +1,17 @@
 ﻿
 using Application;
 using Application.Common.Interfaces;
+using Application.Users.Commands.CreateUser;
+using FluentValidation;
 using Infrastructure;
 using Infrastructure.Persistence;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.OpenApi.Models;
 using PersonalManagment.Api.Services;
+using System.Reflection;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,10 +21,11 @@ var builder = WebApplication.CreateBuilder(args);
 var presentationAssembly = typeof(Presentation.AssemblyReference).Assembly;
 
 builder.Services.AddControllers().AddApplicationPart(presentationAssembly);
-
 builder.Services.AddControllers();
 
-
+// dependency injection 
+builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApplication();
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -35,14 +40,8 @@ builder.Services.AddSwaggerGen(c =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
-// dependency injection 
-builder.Services.AddInfrastructure(builder.Configuration);
-builder.Services.AddApplication();
 
 builder.Services.TryAddScoped(typeof(ICurrentUserService), typeof(CurrentUserService));
-//builder.Services.AddSingleton<ICurrentUserService, CurrentUserService>();
-//builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-
 
 builder.Services.AddSwaggerGen();
 

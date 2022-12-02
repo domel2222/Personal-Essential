@@ -1,5 +1,5 @@
 ﻿
 namespace Application.Users.Commands.CreateUser
 {
-        public sealed record CreateUserRequest(string FirstName, string LastName, string email);
+        public sealed record CreateUserRequest(string FirstName, string LastName, string Email);
 }

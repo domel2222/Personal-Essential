@@ -9,6 +9,9 @@ global using Mapster;
 global using MediatR.Pipeline;
 global using Microsoft.Extensions.Logging;
 global using Domain.Exceptions;
+global using Application.Common.Behaviours;
+global using Microsoft.Extensions.DependencyInjection;
+global using System.Reflection;
 
 namespace Application
 {
