@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Infrastructure.Services
+﻿namespace Infrastructure.Services
 {
     public class KeyVaultService
     {
@@ -14,8 +8,8 @@ namespace Infrastructure.Services
             var secretResponse = await serviceClient.GetSecretAsync(nameSecret);
 
             return secretResponse.Value.Value;
-
         }
+
         private SecretClient GetSecretClient()
         {
             var keyVaultUri = "https://personaltestkeyvault.vault.azure.net/";

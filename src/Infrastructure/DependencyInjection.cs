@@ -4,7 +4,7 @@
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddTransient<IDateTime, DateTimeService>();
+            services.AddTransient<IDateTimeProvider, DateTimeProvider>();
             services.AddScoped<IWeightFitnessGoogleApi, FitnessGoogleConnectionInitializer>();
             services.AddScoped<IActiveFitnessGoogleApi, FitnessGoogleConnectionInitializer>();
             services.AddScoped<ISessionFitnessGoogleApi, FitnessGoogleConnectionInitializer>();

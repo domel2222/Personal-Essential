@@ -1,5 +1,4 @@
 ﻿using Domain.Entities;
-using Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories
@@ -34,9 +33,6 @@ namespace Infrastructure.Persistence.Repositories
         {
             _personalDbContext.Users.Remove(user);
         }
-        public void Update(User user) 
-        { 
 
-        }
     }
 }
