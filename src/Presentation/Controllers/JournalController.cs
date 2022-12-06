@@ -1,4 +1,5 @@
-﻿using MapsterMapper;
+﻿using Application.Journals.Command.UpdateJournal;
+using MapsterMapper;
 
 namespace Presentation.Controllers
 {
@@ -25,6 +26,20 @@ namespace Presentation.Controllers
             var journal = await _sender.Send(command, cancellationToken);
 
             return Created($"api/journals/{journal.Userid}", null);
+        }
+
+        [HttpPut("updatejournal")]
+        [ProducesResponseType(typeof(JournalResponse), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+
+        public async Task<IActionResult> UpdateJournal([FromBody] UpdateJournalCommand updateJournalRequest, CancellationToken cancellationToken)
+        {
+            var command = _mapper.Map<UpdateJournalCommand>(updateJournalRequest);
+
+            await _sender.Send(command, cancellationToken);
+
+            return NoContent();
+
         }
     }
 }

@@ -10,7 +10,6 @@
   <ItemGroup>
     <Folder Include="Activities\Commands\" />
     <Folder Include="Activities\Queries\" />
-    <Folder Include="Common\Command\" />
     <Folder Include="Common\Exceptions\" />
     <Folder Include="Journals\Queries\" />
     <Folder Include="SelfAssessments\Commands\" />

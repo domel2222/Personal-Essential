@@ -24,7 +24,7 @@ namespace Application.Journals.Command.CreateJournal
             {
             if (diaryDate.CompareDateToLocalTime())
                 {
-                    context.AddFailure("Email :", "Please insert appropriate date. Date should not be greater than actual");
+                    context.AddFailure("Diary Date :", "Please insert appropriate date. Date should not be greater than actual");
                 }
             });
 
@@ -33,13 +33,5 @@ namespace Application.Journals.Command.CreateJournal
                                              .WithMessage("User Id should not be null or empty");
         }
 
-        private bool CompareDate(DateTime incomingDate)
-        {
-            var localTime = DateTime.Now.ToLocalTime();
-            var localDateOnly = new DateOnly(localTime.Year, localTime.Month, localTime.Day);
-            var incomingDateOnly = new DateOnly(incomingDate.Year, incomingDate.Month, incomingDate.Day);
-
-            return (incomingDateOnly <= localDateOnly);
-        }
     }
 }
