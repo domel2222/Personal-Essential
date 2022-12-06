@@ -34,8 +34,10 @@ namespace Infrastructure.Persistence.Repositories
 
         public void Remove(User user)
         {
-            _personalDbContext.Users.Remove(user);
+            if (user != null)
+            {
+                _personalDbContext.Users.Remove(user);
+            }
         }
-
     }
 }

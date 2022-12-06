@@ -1,9 +1,8 @@
-﻿
-namespace Application.Users.Commands.DeleteUser
+﻿namespace Application.Users.Commands.DeleteUser
 {
     public sealed class DeleteUserCommandValidator : AbstractValidator<DeleteUserCommand>
     {
-        public DeleteUserCommandValidator() 
+        public DeleteUserCommandValidator()
         {
             RuleFor(x => x.userId).NotEmpty();
         }
