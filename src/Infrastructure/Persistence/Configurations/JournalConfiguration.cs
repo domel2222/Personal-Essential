@@ -14,7 +14,7 @@ namespace Infrastructure.Persistence.Configurations
         public void Configure(EntityTypeBuilder<Journal> builder)
         {
             builder.Property(j => j.Title).HasColumnType("nvarchar(200)");
-            builder.Property(j => j.Text).HasColumnType("nvarchar");
+            builder.Property(j => j.Text).HasColumnType("nvarchar(MAX)");
 
             builder.HasMany(j => j.MostWinsDuringTheDay)
                    .WithOne(j => j.Journal)
