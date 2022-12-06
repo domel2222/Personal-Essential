@@ -13,6 +13,7 @@ global using Domain.Exceptions;
 global using Application.Common.Behaviours;
 global using Microsoft.Extensions.DependencyInjection;
 global using System.Reflection;
+global using Application.Common.Utilities;
 
 namespace Application
 {

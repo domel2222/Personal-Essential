@@ -19,7 +19,7 @@ namespace Infrastructure.Persistence.Repositories
 
         public async Task<Journal> GetJournalById(Guid journalId, CancellationToken cancellationToken)
         {
-            return await _personalDbContext?.Journals? .FirstOrDefaultAsync(x =>x.Id == journalId, cancellationToken);
+            return await _personalDbContext.Journals.FirstOrDefaultAsync(x =>x.Id == journalId && x.InactivatedDate == null, cancellationToken);
         }
 
         public Task<Journal> GetJournalByUserIdAndDate(Guid userid, DateTime diarydate, CancellationToken cancellationToken = default)

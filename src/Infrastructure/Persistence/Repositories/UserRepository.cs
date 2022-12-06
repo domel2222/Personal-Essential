@@ -14,14 +14,14 @@ namespace Infrastructure.Persistence.Repositories
             return _personalDbContext.Users.Any(u => u.Email == email);
         }
 
-        public async Task<IEnumerable<User>> GetAllUserAsync(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<User>> GetAllActiveUserAsync(CancellationToken cancellationToken = default)
         {
-            return await _personalDbContext.Users.ToListAsync(cancellationToken);
+            return await _personalDbContext.Users.Where(x => x.InactivatedDate == null).ToListAsync(cancellationToken);
         }
 
         public async Task<User> GetUserByIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
-            return await _personalDbContext.Users.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+            return await _personalDbContext.Users.FirstOrDefaultAsync(x => x.Id == id && x.InactivatedDate == null, cancellationToken);
         }
 
         public void Insert(User? user)
