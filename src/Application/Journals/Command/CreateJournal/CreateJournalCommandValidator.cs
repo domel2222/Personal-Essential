@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Application.Common.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,17 +16,21 @@ namespace Application.Journals.Command.CreateJournal
                                             .WithMessage("Title field should not be null or empty")
                                             .MaximumLength(200);
 
-            RuleFor(x => x.Diarydate).NotEmpty().WithMessage("Diary Date should not be null or empty");
+            RuleFor(x => x.Diarydate)
+                                            .NotEmpty()
+                                            .WithMessage("Diary Date should not be null or empty");
 
             RuleFor(x => x.Diarydate).Custom((diaryDate, context) =>
             {
-                if (!CompareDate(diaryDate))
+            if (diaryDate.CompareDateToLocalTime())
                 {
                     context.AddFailure("Email :", "Please insert appropriate date. Date should not be greater than actual");
                 }
             });
-            //check guid 000 - 0000 - 000000
-            RuleFor(x => x.Userid).NotEmpty().WithMessage("User Id should not be null or empty");
+
+            RuleFor(x => x.Userid)
+                                             .NotEmpty()
+                                             .WithMessage("User Id should not be null or empty");
         }
 
         private bool CompareDate(DateTime incomingDate)
