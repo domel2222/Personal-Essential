@@ -9,7 +9,8 @@ namespace Domain.Repositories
 {
     public interface IJournalRepository
     {
-        Task<Journal> GetJournalByUserIdAndDate(Guid userid, DateTime diarydate, CancellationToken cancellationToken = default);
+        Task<Journal> GetJournalById(Guid journalId, CancellationToken cancellationToken);
+        Task<Journal> GetJournalByUserIdAndDate(Guid userId, DateTime diaryDate, CancellationToken cancellationToken = default);
         void Insert(Journal journal);
         void Remove(Journal journal);
 

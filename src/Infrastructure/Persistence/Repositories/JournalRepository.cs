@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,15 +17,24 @@ namespace Infrastructure.Persistence.Repositories
             _personalDbContext = personalDbContext;
         }
 
+        public async Task<Journal> GetJournalById(Guid journalId, CancellationToken cancellationToken)
+        {
+            return await _personalDbContext?.Journals? .FirstOrDefaultAsync(x =>x.Id == journalId, cancellationToken);
+        }
+
         public Task<Journal> GetJournalByUserIdAndDate(Guid userid, DateTime diarydate, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
 
-        public void Insert(Journal journal)
+        public void Insert(Journal? journal)
         {
             // if exist update ......
-            _personalDbContext.Journals.Add(journal);      
+            if (journal != null)
+            {
+                _personalDbContext.Journals.Add(journal);      
+            }
+
         }
 
         public void Remove(Journal journal)

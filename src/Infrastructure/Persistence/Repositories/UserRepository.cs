@@ -24,9 +24,12 @@ namespace Infrastructure.Persistence.Repositories
             return await _personalDbContext.Users.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
         }
 
-        public void Insert(User user)
+        public void Insert(User? user)
         {
-            _personalDbContext.Users.Add(user);
+            if (user != null)
+            {
+                _personalDbContext.Users.Add(user);
+            }
         }
 
         public void Remove(User user)
