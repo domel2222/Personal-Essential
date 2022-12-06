@@ -5,10 +5,11 @@ namespace Presentation.Controllers
 {
     [ApiController]
     [Route("api/journals")]
-    public  class JournalController : ControllerBase
+    public class JournalController : ControllerBase
     {
         private readonly ISender _sender;
         private readonly IMapper _mapper;
+
         public JournalController(ISender sender, IMapper mapper)
         {
             _sender = sender;
@@ -20,7 +21,6 @@ namespace Presentation.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> CreateJournal([FromBody] CreateJournalRequest journalRequest, CancellationToken cancellationToken)
         {
-
             var command = journalRequest.Adapt<CreateJournalCommand>();
 
             var journal = await _sender.Send(command, cancellationToken);
@@ -31,15 +31,13 @@ namespace Presentation.Controllers
         [HttpPut("updatejournal")]
         [ProducesResponseType(typeof(JournalResponse), StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-
-        public async Task<IActionResult> UpdateJournal([FromBody] UpdateJournalCommand updateJournalRequest, CancellationToken cancellationToken)
+        public async Task<IActionResult> UpdateJournal([FromBody] UpdateJournalRequest updateJournalRequest, CancellationToken cancellationToken)
         {
             var command = _mapper.Map<UpdateJournalCommand>(updateJournalRequest);
 
             await _sender.Send(command, cancellationToken);
 
             return NoContent();
-
         }
     }
 }
