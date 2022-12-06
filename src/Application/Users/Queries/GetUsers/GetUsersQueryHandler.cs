@@ -11,7 +11,7 @@
 
         public async Task<List<UserResponse>> Handle(GetUsersQuery request, CancellationToken cancellationToken)
         {
-            var users = await _userRepository.GetAllUserAsync(cancellationToken);
+            var users = await _userRepository.GetAllActiveUserAsync(cancellationToken);
 
             return users.Adapt<List<UserResponse>>();
         }

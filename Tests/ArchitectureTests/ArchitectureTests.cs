@@ -29,7 +29,6 @@
                 .GetResult();
             // assert
             result.IsSuccessful.Should().BeTrue();
-
         }
 
         [Fact]
@@ -70,9 +69,7 @@
                 .GetResult();
             // assert
             result.IsSuccessful.Should().BeTrue();
-
         }
-
 
         [Fact]
         public void Infrastructure_Should_Not_HaveDependencyToOtherProjects()
@@ -114,7 +111,6 @@
                 .GetResult();
             // assert
             result.IsSuccessful.Should().BeTrue();
-
         }
 
         [Fact]
@@ -134,7 +130,6 @@
 
             // assert
             result.IsSuccessful.Should().BeTrue();
-
         }
     }
 }

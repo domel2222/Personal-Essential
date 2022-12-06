@@ -1,9 +1,4 @@
-﻿
-using Application.Common.Interfaces;
-using Infrastructure.ExternalAPI.GoogleFIT.DataPoint;
-using Infrastructure.ExternalAPI.GoogleFIT.Interfaces;
-
-namespace PersonalManagment.Api.Controllers
+﻿namespace PersonalManagment.Api.Controllers
 {
     [ApiController]
     [Route("api/fitness")]
@@ -33,10 +28,8 @@ namespace PersonalManagment.Api.Controllers
         [HttpGet("weight")]
         public async Task<ActionResult<IList<WeightDataPoint>>> GetWeightPerDay(DateTime start, DateTime end)
         {
-            var list =  _weightFitnessGoogleApi.GetQueryWeightPerDay(start, end);
+            var list = _weightFitnessGoogleApi.GetQueryWeightPerDay(start, end);
 
-            //var vm = await Mediator.Send(new GetDirectorDetailQuery() { DirectorId = id });
-            //return vm;
             return Ok(list);
         }
 
@@ -57,12 +50,9 @@ namespace PersonalManagment.Api.Controllers
         [HttpGet("session")]
         public async Task<ActionResult<IList<StepsDataPoint>>> GetSessionPerDay(DateTime start, DateTime end, string activityType)
         {
-            //var list = _sessionFitnessGoogleApi.GetSessionPerDay(start, end, activityType);
-            var list =  _sessionFitnessGoogleApi.GetSessionPerDay(start, end, activityType);
+            var list = _sessionFitnessGoogleApi.GetSessionPerDay(start, end, activityType);
 
             return Ok(list);
         }
-
-
     }
 }

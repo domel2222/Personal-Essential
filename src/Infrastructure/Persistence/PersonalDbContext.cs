@@ -8,10 +8,10 @@ namespace Infrastructure.Persistence
 {
     public class PersonalDbContext : DbContext
     {
-        private readonly IDateTime _dateTime;
+        private readonly IDateTimeProvider _dateTime;
         private readonly ICurrentUserService _currentUserService;
 
-        public PersonalDbContext(DbContextOptions<PersonalDbContext> options, IDateTime dateTime, ICurrentUserService currentUserService) : base(options)
+        public PersonalDbContext(DbContextOptions<PersonalDbContext> options, IDateTimeProvider dateTime, ICurrentUserService currentUserService) : base(options)
         {
             _dateTime = dateTime;
             _currentUserService = currentUserService;

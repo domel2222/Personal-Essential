@@ -8,14 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Activity\Commands\" />
-    <Folder Include="Activity\Queries\" />
-    <Folder Include="Common\Command\" />
+    <Folder Include="Activities\Commands\" />
+    <Folder Include="Activities\Queries\" />
     <Folder Include="Common\Exceptions\" />
-    <Folder Include="Journal\Command\" />
-    <Folder Include="Journal\Queries\" />
-    <Folder Include="SelfAssessment\Commands\" />
-    <Folder Include="SelfAssessment\Queries\" />
+    <Folder Include="Journals\Queries\" />
+    <Folder Include="SelfAssessments\Commands\" />
+    <Folder Include="SelfAssessments\Queries\" />
   </ItemGroup>
 
   <ItemGroup>

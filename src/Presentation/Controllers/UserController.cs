@@ -1,8 +1,8 @@
 ﻿namespace Presentation.Controlers
 {
     [ApiController]
-    [Route("api/users")]
-    public class UsersConroller : ControllerBase
+    [Route("api/user")]
+    public class UserController : ControllerBase
     {
         private readonly ISender _sender;
 
@@ -10,7 +10,7 @@
         /// Initializes a new instance of the <see cref="UsersController"/> class.
         /// </summary>
         /// <param name="sender"></param>
-        public UsersConroller(ISender sender)
+        public UserController(ISender sender)
         {
             _sender = sender;
         }
