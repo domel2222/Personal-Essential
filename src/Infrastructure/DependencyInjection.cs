@@ -12,7 +12,6 @@
             services.AddScoped<IJournalRepository, JournalRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             
-
             return services;
         }
     }

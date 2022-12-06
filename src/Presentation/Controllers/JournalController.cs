@@ -1,10 +1,4 @@
-﻿using Application.Contracts.Journals;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MapsterMapper;
 
 namespace Presentation.Controllers
 {
@@ -13,22 +7,24 @@ namespace Presentation.Controllers
     public  class JournalController : ControllerBase
     {
         private readonly ISender _sender;
-        public JournalController(ISender sender)
+        private readonly IMapper _mapper;
+        public JournalController(ISender sender, IMapper mapper)
         {
             _sender = sender;
+            _mapper = mapper;
         }
-
 
         [HttpPost("createJournal")]
         [ProducesResponseType(typeof(JournalResponse), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult> CreateUser([FromBody] CreateUserRequest userRequest, CancellationToken cancellationToken)
+        public async Task<IActionResult> CreateJournal([FromBody] CreateJournalRequest journalRequest, CancellationToken cancellationToken)
         {
-            var command = userRequest.Adapt<CreateUserCommand>();
 
-            var user = await _sender.Send(command, cancellationToken);
+            var command = journalRequest.Adapt<CreateJournalCommand>();
 
-            return Created($"api/journals/{user.Id}", null);
+            var journal = await _sender.Send(command, cancellationToken);
+
+            return Created($"api/journals/{journal.Userid}", null);
         }
     }
 }

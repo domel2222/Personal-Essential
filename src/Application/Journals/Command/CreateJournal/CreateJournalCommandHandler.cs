@@ -1,4 +1,6 @@
-﻿namespace Application.Journals.Command.CreateJournal
+﻿using Domain.Entities;
+
+namespace Application.Journals.Command.CreateJournal
 {
     public sealed class CreateJournalCommandHandler : ICommandHandler<CreateJournalCommand, JournalResponse>
     {
@@ -19,8 +21,8 @@
             {
                 Title = request.Title,
                 Text = request.Text,
-                DiaryDate = request.diaryDate,
-                UserId = request.userId
+                DiaryDate = request.Diarydate,
+                UserId = request.Userid
             };
 
             _journalRepository.Insert(journal);
