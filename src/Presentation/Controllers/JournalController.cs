@@ -4,7 +4,7 @@ using MapsterMapper;
 namespace Presentation.Controllers
 {
     [ApiController]
-    [Route("api/journals")]
+    [Route("api/journal")]
     public class JournalController : ControllerBase
     {
         private readonly ISender _sender;
@@ -28,7 +28,7 @@ namespace Presentation.Controllers
             return Created($"api/journals/{journal.Userid}", null);
         }
 
-        [HttpPut("updatejournal")]
+        [HttpPut("updateJournal")]
         [ProducesResponseType(typeof(JournalResponse), StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> UpdateJournal([FromBody] UpdateJournalRequest updateJournalRequest, CancellationToken cancellationToken)
