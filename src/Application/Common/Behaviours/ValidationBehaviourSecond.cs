@@ -1,6 +1,6 @@
 ﻿namespace Application.Common.Behaviours
 {
-    public class ValidationBehaviourSecond<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : class, ICommand<TResponse>
+    public class ValidationBehaviourSecond<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : class, ICommand<TResponse>, IQuery<TResponse>
     {
         private readonly IEnumerable<IValidator<TRequest>> _validators;
 

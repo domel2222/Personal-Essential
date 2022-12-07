@@ -6,13 +6,11 @@
         {
             RuleFor(x => x.UserId)
                                             .NotEmpty()
-                                            .WithMessage($"{nameof(GetJournalsInSpecificDateQuery.UserId)} {HelperValidator.CorrectDate}");
+                                            .WithMessage($"{nameof(GetJournalsInSpecificDateQuery.UserId)} {HelperValidator.NotNullOrEmpty}");
 
             RuleFor(x => x.DiaryDate)
                                              .NotEmpty()
                                              .WithMessage($"{nameof(GetJournalsInSpecificDateQuery.DiaryDate)} {HelperValidator.NotNullOrEmpty}");
-
-
         }
     }
 }
