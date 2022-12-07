@@ -24,7 +24,7 @@ namespace Presentation.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetJournalByUserIdInSpecificDate(Guid userId, DateTime diaryDate, CancellationToken cancellationToken)
         {
-            var query = new GetUserJournalsInSpecificDateQuery(userId, diaryDate);
+            var query = new GetJournalsInSpecificDateQuery(userId, diaryDate);
 
             var journals = await _sender.Send(query, cancellationToken);
 

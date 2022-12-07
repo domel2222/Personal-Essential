@@ -1,4 +1,5 @@
 ﻿using Application.Common.Utilities;
+using Application.Journals.Queries.GetUserJournalsInSpecificDate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,24 +14,24 @@ namespace Application.Journals.Command.CreateJournal
         {
             RuleFor(x => x.Title)
                                             .NotEmpty()
-                                            .WithMessage("Title field should not be null or empty")
+                                            .WithMessage($"{nameof(CreateJournalCommand.Title)} {HelperValidator.NotNullOrEmpty}")
                                             .MaximumLength(200);
 
             RuleFor(x => x.Diarydate)
                                             .NotEmpty()
-                                            .WithMessage("Diary Date should not be null or empty");
+                                            .WithMessage($"{nameof(CreateJournalCommand.Diarydate)} {HelperValidator.NotNullOrEmpty}");
 
             RuleFor(x => x.Diarydate).Custom((diaryDate, context) =>
             {
-            if (diaryDate.CompareDateToLocalTime())
+            if (!diaryDate.CompareDateToLocalTime())
                 {
-                    context.AddFailure("Diary Date :", "Please insert appropriate date. Date should not be greater than actual");
+                    context.AddFailure($"{nameof(CreateJournalCommand.Title)} :", $" {HelperValidator.CorrectDate}");
                 }
             });
 
             RuleFor(x => x.Userid)
                                              .NotEmpty()
-                                             .WithMessage("User Id should not be null or empty");
+                                             .WithMessage($"{nameof(CreateJournalCommand.Userid)} {HelperValidator.NotNullOrEmpty}");
         }
 
     }

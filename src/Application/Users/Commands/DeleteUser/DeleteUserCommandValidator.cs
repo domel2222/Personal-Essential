@@ -1,10 +1,13 @@
-﻿namespace Application.Users.Commands.DeleteUser
+﻿using Application.Users.Commands.UpdateUser;
+
+namespace Application.Users.Commands.DeleteUser
 {
     public sealed class DeleteUserCommandValidator : AbstractValidator<DeleteUserCommand>
     {
         public DeleteUserCommandValidator()
         {
-            RuleFor(x => x.userId).NotEmpty().WithMessage("User Id should not be empty or null");
+            RuleFor(x => x.UserId).NotEmpty()
+                                                          .WithMessage($"{nameof(DeleteUserCommand.UserId)} {HelperValidator.NotNullOrEmpty}");
         }
     }
 }

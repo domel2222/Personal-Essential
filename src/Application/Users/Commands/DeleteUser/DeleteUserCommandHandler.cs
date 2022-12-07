@@ -13,7 +13,7 @@
 
         public async Task<Unit> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
-            var user = await _userRepository.GetUserByIdAsync(request.userId, cancellationToken);
+            var user = await _userRepository.GetUserByIdAsync(request.UserId, cancellationToken);
 
             _userRepository.Remove(user);
 
