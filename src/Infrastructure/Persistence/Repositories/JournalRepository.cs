@@ -14,12 +14,9 @@ namespace Infrastructure.Persistence.Repositories
 
         public async Task<Journal> GetJournalByIdAsync(Guid journalId, CancellationToken cancellationToken)
         {
-            return await _personalDbContext.Journals.FirstOrDefaultAsync(x => x.Id == journalId && x.InactivatedDate == null, cancellationToken);
-        }
-
-        public Task<Journal> GetJournalByUserIdAndDateAsync(Guid userid, DateTime diarydate, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
+            return await _personalDbContext.Journals
+                                    .AsNoTracking()
+                                    .FirstOrDefaultAsync(x => x.Id == journalId && x.InactivatedDate == null, cancellationToken);
         }
 
         public void Insert(Journal? journal)
@@ -36,6 +33,16 @@ namespace Infrastructure.Persistence.Repositories
             {
                 _personalDbContext.Journals.Remove(journal);
             }
+        }
+
+        public async Task<IEnumerable<Journal>> GetJournalByUserIdAndDateAsync(Guid userId, DateTime diaryDate, CancellationToken cancellationToken)
+        {
+            return await _personalDbContext.Journals
+                                                .AsNoTracking()
+                                                .Where(x => x.UserId == userId 
+                                                && x.DiaryDate >= diaryDate && x.DiaryDate < diaryDate.AddDays(1) 
+                                                && x.InactivatedDate == null)
+                                                .ToListAsync(cancellationToken);
         }
     }
 }

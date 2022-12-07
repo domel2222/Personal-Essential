@@ -6,7 +6,7 @@ namespace Domain.Repositories
     {
         Task<Journal> GetJournalByIdAsync(Guid journalId, CancellationToken cancellationToken);
 
-        Task<Journal> GetJournalByUserIdAndDateAsync(Guid userId, DateTime diaryDate, CancellationToken cancellationToken = default);
+        Task<IEnumerable<Journal>> GetJournalByUserIdAndDateAsync(Guid userId, DateTime diaryDate, CancellationToken cancellationToken = default);
 
         void Insert(Journal journal);
 
