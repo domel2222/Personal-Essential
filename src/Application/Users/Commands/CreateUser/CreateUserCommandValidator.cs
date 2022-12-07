@@ -1,4 +1,6 @@
 ﻿
+using Application.Journals.Command.CreateJournal;
+
 namespace Application.Users.Commands.CreateUser
 {
     public sealed class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
@@ -7,25 +9,25 @@ namespace Application.Users.Commands.CreateUser
         {
             RuleFor(x => x.FirstName)
                                                      .NotEmpty()
-                                                     .WithMessage("First should not be null or empty!")
+                                                     .WithMessage($"{nameof(CreateUserCommand.FirstName)} {HelperValidator.NotNullOrEmpty}")
                                                      .MaximumLength(100);
 
             RuleFor(x => x.LastName)
                                                     .NotEmpty()
-                                                    .WithMessage("LastName should not be null or empty!")
+                                                    .WithMessage($"{nameof(CreateUserCommand.LastName)} {HelperValidator.NotNullOrEmpty}")
                                                     .MaximumLength(100);
 
             RuleFor(x => x.Email)
                                                     .NotEmpty()
-                                                        .WithMessage("Email address is required.")
+                                                    .WithMessage($"{nameof(CreateUserCommand.Email)} {HelperValidator.NotNullOrEmpty}")
                                                     .EmailAddress()
-                                                        .WithMessage("A valid email address is required.");
+                                                    .WithMessage($"{nameof(CreateUserCommand.Email)} {HelperValidator.ValidEmail}");
 
             RuleFor(x => x.Email).Custom((email, context) =>
             {
                 if (userRepository.CheckEmail(email))
                 {
-                    context.AddFailure("Email :", "Please insert another email this is taken");
+                    context.AddFailure($"{nameof(CreateUserCommand.Email)} ,{HelperValidator.ChooseAnotherEmail}.");
                 }
 }); 
         }

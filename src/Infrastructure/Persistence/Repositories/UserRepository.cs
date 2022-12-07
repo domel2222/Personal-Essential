@@ -11,17 +11,23 @@ namespace Infrastructure.Persistence.Repositories
 
         public bool CheckEmail(string email)
         {
-            return _personalDbContext.Users.Any(u => u.Email == email);
+            return _personalDbContext.Users
+                                        .AsNoTracking()
+                                        .Any(u => u.Email == email);
         }
 
         public async Task<IEnumerable<User>> GetAllActiveUserAsync(CancellationToken cancellationToken = default)
         {
-            return await _personalDbContext.Users.Where(x => x.InactivatedDate == null).ToListAsync(cancellationToken);
+            return await _personalDbContext.Users
+                                        .AsNoTracking()
+                                        .Where(x => x.InactivatedDate == null).ToListAsync(cancellationToken);
         }
 
         public async Task<User> GetUserByIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
-            return await _personalDbContext.Users.FirstOrDefaultAsync(x => x.Id == id && x.InactivatedDate == null, cancellationToken);
+            return await _personalDbContext.Users
+                                        .AsNoTracking()
+                                        .FirstOrDefaultAsync(x => x.Id == id && x.InactivatedDate == null, cancellationToken);
         }
 
         public void Insert(User? user)
@@ -34,8 +40,10 @@ namespace Infrastructure.Persistence.Repositories
 
         public void Remove(User user)
         {
-            _personalDbContext.Users.Remove(user);
+            if (user != null)
+            {
+                _personalDbContext.Users.Remove(user);
+            }
         }
-
     }
 }

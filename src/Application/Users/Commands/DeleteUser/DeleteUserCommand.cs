@@ -1,6 +1,4 @@
-﻿
-namespace Application.Users.Commands.DeleteUser
+﻿namespace Application.Users.Commands.DeleteUser
 {
-    public sealed record DeleteUserCommand(Guid userId) : ICommand<Unit>;
-
+    public sealed record DeleteUserCommand(Guid UserId) : ICommand<Unit>;
 }

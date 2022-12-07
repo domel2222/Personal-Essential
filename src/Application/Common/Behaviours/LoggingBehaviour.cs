@@ -1,7 +1,7 @@
 ﻿
 namespace Application.Common.Behaviours
 {
-    public class LoggingBehaviour<TRequest> : IRequestPreProcessor<TRequest>//reading about it 
+    public class LoggingBehaviour<TRequest> : IRequestPreProcessor<TRequest>
     {
         private readonly ILogger _logger;
         public LoggingBehaviour(ILogger<TRequest> logger)

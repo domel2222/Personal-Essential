@@ -13,7 +13,7 @@
 
         public async Task<Unit> Handle(UpdateJournalCommand request, CancellationToken cancellationToken)
         {
-            var journal = await _journalRepository.GetJournalById(request.JournalId, cancellationToken);
+            var journal = await _journalRepository.GetJournalByIdAsync(request.JournalId, cancellationToken);
 
             if (journal == null)
             {

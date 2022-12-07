@@ -1,12 +1,10 @@
-﻿using Domain.Entities;
-
-namespace Application.Journals.Command.CreateJournal
+﻿namespace Application.Journals.Command.CreateJournal
 {
     public sealed class CreateJournalCommandHandler : ICommandHandler<CreateJournalCommand, JournalResponse>
     {
-        readonly private IJournalRepository _journalRepository;
-        readonly private IUnitOfWork _unitOfWork;
-        readonly private IMapper _mapper;
+        private readonly IJournalRepository _journalRepository;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
         public CreateJournalCommandHandler(IJournalRepository journalRepository, IUnitOfWork unitOfWork, IMapper mapper)
         {

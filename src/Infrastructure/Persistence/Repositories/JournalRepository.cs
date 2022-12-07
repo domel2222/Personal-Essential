@@ -1,10 +1,5 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Persistence.Repositories
 {
@@ -17,29 +12,37 @@ namespace Infrastructure.Persistence.Repositories
             _personalDbContext = personalDbContext;
         }
 
-        public async Task<Journal> GetJournalById(Guid journalId, CancellationToken cancellationToken)
+        public async Task<Journal> GetJournalByIdAsync(Guid journalId, CancellationToken cancellationToken)
         {
-            return await _personalDbContext.Journals.FirstOrDefaultAsync(x =>x.Id == journalId && x.InactivatedDate == null, cancellationToken);
-        }
-
-        public Task<Journal> GetJournalByUserIdAndDate(Guid userid, DateTime diarydate, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
+            return await _personalDbContext.Journals
+                                    .AsNoTracking()
+                                    .FirstOrDefaultAsync(x => x.Id == journalId && x.InactivatedDate == null, cancellationToken);
         }
 
         public void Insert(Journal? journal)
         {
-            // if exist update ......
             if (journal != null)
             {
-                _personalDbContext.Journals.Add(journal);      
+                _personalDbContext.Journals.Add(journal);
             }
-
         }
 
-        public void Remove(Journal journal)
+        public void Remove(Journal? journal)
         {
-            _personalDbContext.Journals.Remove(journal);
+            if (journal != null)
+            {
+                _personalDbContext.Journals.Remove(journal);
+            }
+        }
+
+        public async Task<IEnumerable<Journal>> GetJournalByUserIdAndDateAsync(Guid userId, DateTime diaryDate, CancellationToken cancellationToken)
+        {
+            return await _personalDbContext.Journals
+                                                .AsNoTracking()
+                                                .Where(x => x.UserId == userId 
+                                                && x.DiaryDate >= diaryDate && x.DiaryDate < diaryDate.AddDays(1) 
+                                                && x.InactivatedDate == null)
+                                                .ToListAsync(cancellationToken);
         }
     }
 }
