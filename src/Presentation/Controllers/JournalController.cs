@@ -19,12 +19,12 @@ namespace Presentation.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("journals/{userId:Guid}/{diaryDate:DateTime}")]
+        [HttpGet("journals/{UserId:Guid}/{DiaryDate:DateTime}")]
         [ProducesResponseType(typeof(List<JournalResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetJournalByUserIdInSpecificDate(Guid userId, DateTime diaryDate, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetJournalByUserIdInSpecificDate(Guid UserId, DateTime DiaryDate, CancellationToken cancellationToken)
         {
-            var query = new GetJournalsInSpecificDateQuery(userId, diaryDate);
+            var query = new GetJournalsInSpecificDateQuery(UserId, DiaryDate);
 
             var journals = await _sender.Send(query, cancellationToken);
 
@@ -40,7 +40,7 @@ namespace Presentation.Controllers
 
             var journal = await _sender.Send(command, cancellationToken);
 
-            return Created($"api/journals/{journal.Userid}", null);
+            return Created($"api/journals/{journal.UserId}", null);
         }
 
         [HttpPut("journal/{journalId:Guid}")]
