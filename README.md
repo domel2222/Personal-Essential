@@ -1,6 +1,6 @@
-##Personal Management and Tracker
+# Personal Management and Tracker
 
-# What is this project about?
+## What is this project about?
 
 Personal Essential is a project to build Full Stack application with ASP.NET Core (.NET 6) Web API following Clean Architecture. 
 It will be a personal organizer. 
@@ -13,7 +13,7 @@ Frontend for this application is built using Angular and placed in another repos
 
 Personal Management and Tracker - working on the app in progress ...
 
-# What does the to this day the Solution offer?
+## What does the to this day the Solution offer?
 
 - [x] Clean Architecture with separated layers for API, Application, Domain, Infrastructure, and Presentation
 - [x] UnitOfWork and Repositories
@@ -26,7 +26,7 @@ Personal Management and Tracker - working on the app in progress ...
 - [x] Authorization with a google account and access to Google Fit via Google Cloud
 - [x] Azure Key Vault stores access keys for Google Rest API
 
-# Technologies Used
+## Technologies Used
 
 * ASP.NET Core (.NET 6) Web API
 * Entity Framework Core (EFCore 6)
