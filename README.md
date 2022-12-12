@@ -3,8 +3,8 @@
 ## What is this project about?
 
 Personal Essential is a project to build Full Stack application with ASP.NET Core (.NET 6) Web API following Clean Architecture. 
-It will be a personal organizer. 
-- user will be able to write a diary, 
+It is a personal organizer and tracker.
+- user will be able to write a diary
 - will has access to the data for the google fitness account(steps, amount of sleep, weight, etc..)
 - will be an able assessment of his day 
 - and a lot more...
