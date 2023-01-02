@@ -27,7 +27,6 @@
 
             await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-            //return journal.Adapt<JournalResponse>();
             return _mapper.Map<JournalResponse>(journal);
         }
     }

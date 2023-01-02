@@ -6,7 +6,7 @@ using MapsterMapper;
 namespace Presentation.Controllers
 {
     [ApiController]
-    [Route("api/")]
+    [Route("api/journals")]
     public class JournalController : ControllerBase
     {
         private readonly ISender _sender;
@@ -18,7 +18,7 @@ namespace Presentation.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("journals/{userId:Guid}/{diaryDate:DateTime}")]
+        [HttpGet("/{userId:Guid}/{diaryDate:DateTime}")]
         [ProducesResponseType(typeof(List<JournalResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetJournalByUserIdInSpecificDate(Guid userId, DateTime diaryDate, CancellationToken cancellationToken)
@@ -30,7 +30,7 @@ namespace Presentation.Controllers
             return Ok(journals);
         }
 
-        [HttpPost("journals")]
+        [HttpPost()]
         [ProducesResponseType(typeof(JournalResponse), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> CreateJournal([FromBody] CreateJournalRequest journalRequest, CancellationToken cancellationToken)
@@ -42,7 +42,7 @@ namespace Presentation.Controllers
             return Created($"api/journals/{journal.UserId}", null);
         }
 
-        [HttpPut("journals/{journalId:Guid}")]
+        [HttpPut("/{journalId:Guid}")]
         [ProducesResponseType(typeof(JournalResponse), StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> UpdateJournal([FromBody] UpdateJournalRequest updateJournalRequest, CancellationToken cancellationToken)
@@ -54,7 +54,7 @@ namespace Presentation.Controllers
             return NoContent();
         }
 
-        [HttpDelete("journals/{journalId:Guid}")]
+        [HttpDelete("/{journalId:Guid}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> DeleteJournal(Guid journalId, CancellationToken cancellationToken)
