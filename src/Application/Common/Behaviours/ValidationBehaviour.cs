@@ -1,4 +1,4 @@
-﻿//using ValidationException = Application.Common.Exceptions.ValidationException;
+﻿using ValidationException = Application.Common.Exceptions.ValidationException;
 
 namespace Application.Common.Behaviours
 {
@@ -35,7 +35,7 @@ namespace Application.Common.Behaviours
             //                                          Key = propertyName,
             //                                          Values = errorMessages.Distinct().ToArray()
             //                                      })
-            //                                      .ToDictionary(x => x.Key, x => x.Values)
+            //                                      .ToDictionary(x => x.Key, x => x.Values);
 
             //if (errorsDictionaray.Any())
             //{

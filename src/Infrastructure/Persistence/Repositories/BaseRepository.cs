@@ -1,6 +1,4 @@
-﻿using Domain.Common;
-using Microsoft.EntityFrameworkCore;
-
+﻿
 namespace Infrastructure.Persistence.Repositories
 {
     public class BaseRepository<T> : IBaseAsyncRepository<T> where T : AuditableEntity
