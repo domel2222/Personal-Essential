@@ -11,6 +11,10 @@ global using Application.Users.Queries.GetUserById;
 global using Application.Users.Queries.GetUsers;
 global using Application.Contracts.Journals;
 global using Application.Journals.Command.CreateJournal;
+global using Application.Journals.Command.DeleteJournal;
+global using Application.Journals.Command.UpdateJournal;
+global using Application.Journals.Queries.GetUserJournalsInSpecificDate;
+global using MapsterMapper;
 namespace Presentation
 {
 }

@@ -11,9 +11,9 @@ namespace Application.SelfAssessments.Commands.UpdateSelfAssessmentValue
     {
         public UpdateSelfAssessmentValueValidator()
         {
-            RuleFor(x => x.JournalId)
+            RuleFor(x => x.SelfAssessmentValueId)
                                                     .NotEmpty()
-                                                    .WithMessage($"{nameof(UpdateSelfAssessmentValueCommand.JournalId)} {HelperValidator.NotNullOrEmpty}");
+                                                    .WithMessage($"{nameof(UpdateSelfAssessmentValueCommand.SelfAssessmentValueId)} {HelperValidator.NotNullOrEmpty}");
 
             RuleFor(x => x.AssesmentDate).Custom((diaryDate, context) =>
             {

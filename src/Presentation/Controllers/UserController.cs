@@ -5,6 +5,7 @@
     public class UserController : ControllerBase
     {
         private readonly ISender _sender;
+        
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UsersController"/> class.

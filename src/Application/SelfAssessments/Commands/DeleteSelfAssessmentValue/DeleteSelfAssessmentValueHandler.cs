@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Application.SelfAssessments.Commands.DeleteSelfAssessmentValue
+﻿namespace Application.SelfAssessments.Commands.DeleteSelfAssessmentValue
 {
     public class DeleteSelfAssessmentValueHandler : ICommandHandler<DeleteSelfAssessmentValueCommand, Unit>
     {
@@ -17,16 +11,15 @@ namespace Application.SelfAssessments.Commands.DeleteSelfAssessmentValue
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<Unit>  Handle(DeleteSelfAssessmentValueCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteSelfAssessmentValueCommand request, CancellationToken cancellationToken)
         {
             var assassment = await _selfAssessmentValueRepository.GetByIdAsync(request.SelfAssessmentValueId, cancellationToken);
 
             if (assassment == null)
             {
                 _selfAssessmentValueRepository.Remove(assassment);
-               await  _unitOfWork.SaveChangesAsync(cancellationToken);
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
             }
-
 
             return Unit.Value;
         }

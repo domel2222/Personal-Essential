@@ -11,7 +11,7 @@
      double EnglishTimeResult,
      double AudiobookReadingResult,
      double DailyResultpublic,
-     DateTime AssesmentDate
+     DateTime AssessmentDate
 
         );
 }

@@ -1,9 +1,4 @@
-﻿using Application.Journals.Command.DeleteJournal;
-using Application.Journals.Command.UpdateJournal;
-using Application.Journals.Queries.GetUserJournalsInSpecificDate;
-using MapsterMapper;
-
-namespace Presentation.Controllers
+﻿namespace Presentation.Controllers
 {
     [ApiController]
     [Route("api/journals")]

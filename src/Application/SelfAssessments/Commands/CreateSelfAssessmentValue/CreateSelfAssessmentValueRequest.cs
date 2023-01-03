@@ -1,6 +1,6 @@
 ﻿namespace Application.SelfAssessments.Commands
 {
-    public sealed record CreateSelfAssessmentValueCommandRequest(
+    public sealed record CreateSelfAssessmentValueRequest(
      double DeepWorkResult, 
      double AffirmationResult, 
      double UsePhoneResult ,

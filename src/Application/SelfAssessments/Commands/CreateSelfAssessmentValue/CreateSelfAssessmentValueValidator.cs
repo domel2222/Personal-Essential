@@ -1,8 +1,8 @@
 ﻿namespace Application.SelfAssessments.Commands
 {
-    public class CreateSelfAssessmentCommandValueValidator : AbstractValidator<CreateSelfAssessmentCommand>
+    public class CreateSelfAssessmentValueValidator : AbstractValidator<CreateSelfAssessmentCommand>
     {
-        public CreateSelfAssessmentCommandValueValidator()
+        public CreateSelfAssessmentValueValidator()
         {
             RuleFor(x => x.UserId)
                                                     .NotEmpty()
