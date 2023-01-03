@@ -13,7 +13,7 @@
             _mapper = mapper;
         }
 
-        [HttpGet("/{userId:Guid}/{diaryDate:DateTime}")]
+        [HttpGet("{userId:Guid}/{diaryDate:DateTime}")]
         [ProducesResponseType(typeof(List<JournalResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetJournalByUserIdInSpecificDate(Guid userId, DateTime diaryDate, CancellationToken cancellationToken)
@@ -37,7 +37,7 @@
             return Created($"api/journals/{journal.UserId}", null);
         }
 
-        [HttpPut("/{journalId:Guid}")]
+        [HttpPut("{journalId:Guid}")]
         [ProducesResponseType(typeof(JournalResponse), StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> UpdateJournal([FromBody] UpdateJournalRequest updateJournalRequest, CancellationToken cancellationToken)
@@ -49,7 +49,7 @@
             return NoContent();
         }
 
-        [HttpDelete("/{journalId:Guid}")]
+        [HttpDelete("{journalId:Guid}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> DeleteJournal(Guid journalId, CancellationToken cancellationToken)

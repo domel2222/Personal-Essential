@@ -42,7 +42,7 @@ namespace Presentation.Controllers
             return Created($"api/assessments/{assessment.AssessmentDate}", null);
         }
 
-        [HttpPut("/{selfAssessmentValueId:Guid}", Name = "UpdateSelfAssessmentValue")]
+        [HttpPut("{selfAssessmentValueId:Guid}", Name = "UpdateSelfAssessmentValue")]
         [ProducesResponseType(typeof(SelfAssessmentValueResponse), StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> UpdateSelfAssessmentValue([FromBody] UpdateSelfAssessmentValueRequest updateSelfAssessmentValueRequest, CancellationToken cancellationToken)
@@ -54,7 +54,7 @@ namespace Presentation.Controllers
             return NoContent();
         }
 
-        [HttpDelete("/{selfAssessmentValueId:Guid}", Name = "DeleteSelfAssessmentValue")]
+        [HttpDelete("{selfAssessmentValueId:Guid}", Name = "DeleteSelfAssessmentValue")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> DeleteSelfAssesmentValue(Guid selfAssessmentValueId, CancellationToken cancellationToken)

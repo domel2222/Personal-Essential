@@ -32,7 +32,7 @@
             return Ok(users);
         }
 
-        [HttpGet("/{userId:Guid}")]
+        [HttpGet("{userId:Guid}")]
         [ProducesResponseType(typeof(UserResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetUserById(Guid userId, CancellationToken cancellationToken)
@@ -56,7 +56,7 @@
             return CreatedAtAction(nameof(GetUserById), new { userId = user.Id }, user);
         }
 
-        [HttpPut("/{userId:Guid}")]
+        [HttpPut("{userId:Guid}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> UpdateUser(Guid userId, [FromBody] UpdateUserRequest updateUserRequest, CancellationToken cancellationToken)
@@ -71,7 +71,7 @@
             return NoContent();
         }
 
-        [HttpDelete("/{userId:Guid}")]
+        [HttpDelete("{userId:Guid}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> DeleteUser(Guid userId, CancellationToken cancellationToken)

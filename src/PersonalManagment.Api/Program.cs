@@ -1,19 +1,4 @@
 ﻿
-using Application;
-using Application.Common.Interfaces;
-using Application.Users.Commands.CreateUser;
-using FluentValidation;
-using Infrastructure;
-using Infrastructure.Persistence;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.OpenApi.Models;
-using PersonalManagment.Api.Services;
-using System.Reflection;
-using System.Text.Json.Serialization;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -40,8 +25,8 @@ builder.Services.AddSwaggerGen(c =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
-
 builder.Services.TryAddScoped(typeof(ICurrentUserService), typeof(CurrentUserService));
+builder.Services.AddTransient<ExceptionHandlingMiddleware>();
 
 builder.Services.AddSwaggerGen();
 
@@ -74,6 +59,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors("PersonalEssentialOrigins");
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseHttpsRedirection();
 
