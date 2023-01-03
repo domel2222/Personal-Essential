@@ -23,6 +23,7 @@ Personal Management and Tracker - working on the app in progress ...
 - [x] NetArchTest for testing architecture dependencies
 - [x] Auditable Entities with Entity Tracking
 - [x] Mapster implementation for conversion objects
+- [x] Middleware with Global Exceptions Handling
 - [x] Authorization with a google account and access to Google Fit via Google Cloud
 - [x] Azure Key Vault stores access keys for Google Rest API
 
