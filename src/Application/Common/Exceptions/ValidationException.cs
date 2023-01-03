@@ -1,14 +1,16 @@
 ﻿
+using Domain.Shared;
 using ApplicationException = Domain.Exceptions.ApplicationException;
 
 namespace Application.Common.Exceptions
 {
     public class ValidationException : ApplicationException
     {
-        public IReadOnlyDictionary<string, string[]> ErrorsDictionary { get; }
-        public ValidationException(IReadOnlyDictionary<string, string[]> errorsDictionery)
+        
+        public IEnumerable<Error> Errors { get; }
+        public ValidationException(IEnumerable<Error> errorsCollection)
             : base("Validation Faliure", "One or more validation errors occured")
-            => ErrorsDictionary = errorsDictionery;
+            => Errors = errorsCollection;
 
     }
 }

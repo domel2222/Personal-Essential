@@ -6,7 +6,7 @@ namespace Application.Users.Commands.CreateUser
     {
         private readonly IUserRepository _userRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public CreateUserCommandHandler(IUserRepository userRepository ,IUnitOfWork unitOfWork)
+        public CreateUserCommandHandler(IUserRepository userRepository, IUnitOfWork unitOfWork)
         {
             _userRepository = userRepository;
             _unitOfWork = unitOfWork;

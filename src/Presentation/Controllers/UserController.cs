@@ -1,10 +1,11 @@
 ﻿namespace Presentation.Controlers
 {
     [ApiController]
-    [Route("api/")]
+    [Route("api/users")]
     public class UserController : ControllerBase
     {
         private readonly ISender _sender;
+        
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UsersController"/> class.
@@ -20,7 +21,7 @@
         /// </summary>
         /// <param name="cancellation"></param>
         /// <returns></returns>
-        [HttpGet("users")]
+        [HttpGet()]
         [ProducesResponseType(typeof(List<UserResponse>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetUsers(CancellationToken cancellationToken)
         {
@@ -31,7 +32,7 @@
             return Ok(users);
         }
 
-        [HttpGet("user/{userId:Guid}")]
+        [HttpGet("{userId:Guid}")]
         [ProducesResponseType(typeof(UserResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetUserById(Guid userId, CancellationToken cancellationToken)
@@ -43,7 +44,7 @@
             return Ok(user);
         }
 
-        [HttpPost("user")]
+        [HttpPost()]
         [ProducesResponseType(typeof(UserResponse), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest userRequest, CancellationToken cancellationToken)
@@ -55,7 +56,7 @@
             return CreatedAtAction(nameof(GetUserById), new { userId = user.Id }, user);
         }
 
-        [HttpPut("user/{userId:Guid}")]
+        [HttpPut("{userId:Guid}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> UpdateUser(Guid userId, [FromBody] UpdateUserRequest updateUserRequest, CancellationToken cancellationToken)
@@ -70,7 +71,7 @@
             return NoContent();
         }
 
-        [HttpDelete("user/{userId:Guid}")]
+        [HttpDelete("{userId:Guid}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> DeleteUser(Guid userId, CancellationToken cancellationToken)

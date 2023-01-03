@@ -3,11 +3,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories
 {
-    public sealed class UserRepository : IUserRepository
+    public sealed class UserRepository : BaseRepository<User>, IUserRepository
     {
-        private readonly PersonalDbContext _personalDbContext;
-
-        public UserRepository(PersonalDbContext personalDbContext) => _personalDbContext = personalDbContext;
+        public UserRepository(PersonalDbContext personalDbContext) : base(personalDbContext)
+        {
+        }
 
         public bool CheckEmail(string email)
         {
@@ -21,29 +21,6 @@ namespace Infrastructure.Persistence.Repositories
             return await _personalDbContext.Users
                                         .AsNoTracking()
                                         .Where(x => x.InactivatedDate == null).ToListAsync(cancellationToken);
-        }
-
-        public async Task<User> GetUserByIdAsync(Guid id, CancellationToken cancellationToken = default)
-        {
-            return await _personalDbContext.Users
-                                        .AsNoTracking()
-                                        .FirstOrDefaultAsync(x => x.Id == id && x.InactivatedDate == null, cancellationToken);
-        }
-
-        public void Insert(User? user)
-        {
-            if (user != null)
-            {
-                _personalDbContext.Users.Add(user);
-            }
-        }
-
-        public void Remove(User user)
-        {
-            if (user != null)
-            {
-                _personalDbContext.Users.Remove(user);
-            }
         }
     }
 }

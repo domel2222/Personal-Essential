@@ -24,7 +24,6 @@
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet("weight")]
         public async Task<ActionResult<IList<WeightDataPoint>>> GetWeightPerDay(DateTime start, DateTime end)
         {
@@ -35,7 +34,6 @@
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet("steps")]
         public async Task<ActionResult<IList<StepsDataPoint>>> GetStepsPerDay(DateTime start, DateTime end)
         {
@@ -46,7 +44,6 @@
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet("session")]
         public async Task<ActionResult<IList<StepsDataPoint>>> GetSessionPerDay(DateTime start, DateTime end, string activityType)
         {

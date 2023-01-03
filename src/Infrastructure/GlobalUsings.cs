@@ -13,6 +13,8 @@ global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
 global using Domain.Repositories;
 global using Infrastructure.Persistence.Repositories;
+global using Domain.Common;
+global using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure
 {

@@ -13,11 +13,13 @@
 
         public async Task<Unit> Handle(DeleteJournalCommand request, CancellationToken cancellationToken)
         {
-            var journal = await _journalRepository.GetJournalByIdAsync(request.JournalId, cancellationToken);
+            var journal = await _journalRepository.GetByIdAsync(request.JournalId, cancellationToken);
 
-            _journalRepository.Remove(journal);
-
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if (journal == null)
+            {
+                _journalRepository.Remove(journal);
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
+            }
 
             return Unit.Value;
         }

@@ -11,6 +11,7 @@
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IJournalRepository, JournalRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ISelfAssessmentValueRepository, SelfAssessmentValueRepository>();
             
             return services;
         }
