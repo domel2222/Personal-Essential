@@ -1,5 +1,4 @@
-﻿
-namespace Infrastructure.Persistence.Repositories
+﻿namespace Infrastructure.Persistence.Repositories
 {
     public class BaseRepository<T> : IBaseAsyncRepository<T> where T : AuditableEntity
     {

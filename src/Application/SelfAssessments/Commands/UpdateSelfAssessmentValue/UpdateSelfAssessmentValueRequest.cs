@@ -1,13 +1,12 @@
-﻿using Application.Contracts.Assessments;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.SelfAssessments.Commands
+namespace Application.SelfAssessments.Commands.UpdateSelfAssessmentValue
 {
-    public sealed record  CreateSelfAssessmentCommand(
+    public sealed record UpdateSelfAssessmentValueRequest(
      double DeepWorkResult,
      double AffirmationResult,
      double UsePhoneResult,
@@ -18,9 +17,9 @@ namespace Application.SelfAssessments.Commands
      double EnglishTimeResult,
      double AudiobookReadingResult,
      double DailyResult,
-    Guid UserId,
-    Guid JournalId
-        ) : ICommand<SelfAssessmentValueResponse>
+     DateTime AssesmentDate,
+     Guid SelfAssessmentValueId
+        )
     {
     }
 }

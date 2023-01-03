@@ -10,6 +10,9 @@
      double CaloriesResult ,
      double EnglishTimeResult ,
      double AudiobookReadingResult, 
-     double DailyResult       
+     double DailyResult,
+     DateTime AssesmentDate,
+     Guid UserId,
+     Guid JournalId
         );
 }

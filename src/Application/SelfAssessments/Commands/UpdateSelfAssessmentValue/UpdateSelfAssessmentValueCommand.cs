@@ -1,6 +1,6 @@
-﻿namespace Application.Contracts.Assessments
+﻿namespace Application.SelfAssessments.Commands.UpdateSelfAssessmentValue
 {
-    public sealed record SelfAssessmentValueResponse(
+    public sealed record UpdateSelfAssessmentValueCommand(
      double DeepWorkResult,
      double AffirmationResult,
      double UsePhoneResult,
@@ -10,8 +10,9 @@
      double CaloriesResult,
      double EnglishTimeResult,
      double AudiobookReadingResult,
-     double DailyResultpublic,
-     DateTime AssesmentDate
-
-        );
+     double DailyResult,
+     DateTime AssesmentDate,
+     Guid SelfAssessmentValueId
+        ) : ICommand<Unit>
+    { }
 }
