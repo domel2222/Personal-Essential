@@ -3,6 +3,8 @@ global using Application.Abstractions.Messaging;
 global using MediatR;
 global using Application.Contracts.Users;
 global using Application.Contracts.Journals;
+global using Application.Contracts.Assessments;
+global using Application.Contracts.MostWinsDuringTheDay;
 global using Domain.Entities;
 global using Domain.Repositories;
 global using Mapster;

@@ -27,7 +27,7 @@ namespace Application.UnitTests.Journals.Commands
         {
             var guid = new Guid("8316ad31-e815-41d6-9d00-26392977132a");
             //arrange
-            CreateJournalCommand command = new CreateJournalCommand
+            var command = new CreateJournalCommand
             (
                 "My Journal",
                 "Today was a great day.",

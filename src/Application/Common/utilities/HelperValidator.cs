@@ -13,5 +13,6 @@ namespace Application.Common.Utilities
         public const string ChooseAnotherEmail = "Please insert another email this is taken";
         public const string ValidEmail = "A valid email address is required";
 
+
     }
 }
