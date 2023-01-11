@@ -17,12 +17,11 @@
         {
             var mostWin = new MostWinDuringTheDay
             {
-                Message = request.message,
+                Message = request.Message,
                 JournalId = request.JournalId,
                 StrenghtId = SwitchingStrenght.SwitchStrenghtFromNameToGuid(request.StrenghtName)
             };
-            // switch method for strenght
-
+            
             _mostWinDuringTheDayRepository.Insert(mostWin);
 
             await _unitOfWork.SaveChangesAsync(cancellationToken);

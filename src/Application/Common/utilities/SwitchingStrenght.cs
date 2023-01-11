@@ -21,7 +21,7 @@ namespace Application.Common.Utilities
                 "Activator" => new Guid("7C172324-0B15-4DB8-B77F-C9FF75B72218"),
                 "Responsibility" => new Guid("AC23B6C8-8368-4F14-A11B-F0BC24CAF864"),
                 "Relator" => new Guid("6C9EB440-49DE-4DB5-9B4E-FA21F261D20E"),
-                _ => throw new NotImplementedException()
+                _ => Guid.Empty
             };
     }
 }

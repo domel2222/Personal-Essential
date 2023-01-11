@@ -11,6 +11,8 @@
     <Folder Include="Activities\Commands\" />
     <Folder Include="Activities\Queries\" />
     <Folder Include="Common\Exceptions\" />
+    <Folder Include="MostWinsDuringTheDay\Commands\DeleteWin\" />
+    <Folder Include="MostWinsDuringTheDay\Queries\" />
     <Folder Include="SelfAssessments\Queries\" />
   </ItemGroup>
 
