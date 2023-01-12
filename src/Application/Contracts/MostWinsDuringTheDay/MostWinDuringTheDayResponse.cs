@@ -1,6 +1,6 @@
 ﻿namespace Application.Contracts.MostWinsDuringTheDay
 {
-    public sealed record MostWinDuringTheDayResponse(string message, string StrenghtName)
+    public sealed record MostWinDuringTheDayResponse(Guid MostWin, string message, string StrenghtName)
     {
 
     }

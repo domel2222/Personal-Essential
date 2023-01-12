@@ -1,27 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Application.Common.Utilities
+﻿namespace Application.Common.Utilities
 {
     public static class SwitchingStrenght
     {
+        private const string Connectedness = "2A308E97-5314-4104-A0C6-77C6D56121F1";
+        private const string Individualization = "3A19987B-2EDA-4645-91B5-B285B9113972";
+        private const string Learner = "E4013A75-6D0C-40AA-BB38-B6FB69C95D20";
+        private const string Focus = "D33453C3-C880-4C5D-A4E9-BC3C6CC2C9A5";
+        private const string Achiever = "CF52FCFB-DF40-44DA-869F-BCAC271194D5";
+        private const string SelfAssurance  = "D571A099-78A6-4A3A-9128-C24D1DF7745A";
+        private const string Futuristic = "103A482E-6E62-49E1-B2C9-C251E3955ED2";
+        private const string Activator = "7C172324-0B15-4DB8-B77F-C9FF75B72218";
+        private const string Responsibility = "AC23B6C8-8368-4F14-A11B-F0BC24CAF864";
+        private const string Relator = "6C9EB440-49DE-4DB5-9B4E-FA21F261D20E";
         public static Guid SwitchStrenghtFromNameToGuid(string strenghtName) =>
             strenghtName switch
             {
-                "Connectedness" => new Guid("2A308E97-5314-4104-A0C6-77C6D56121F1"),
-                "Individualization" => new Guid("3A19987B-2EDA-4645-91B5-B285B9113972"),
-                "Learner" => new Guid("E4013A75-6D0C-40AA-BB38-B6FB69C95D20"),
-                "Focus" => new Guid("D33453C3-C880-4C5D-A4E9-BC3C6CC2C9A5"),
-                "Achiever" => new Guid("CF52FCFB-DF40-44DA-869F-BCAC271194D5"),
-                "Self-Assurance" => new Guid("D571A099-78A6-4A3A-9128-C24D1DF7745A"),
-                "Futuristic" => new Guid("103A482E-6E62-49E1-B2C9-C251E3955ED2"),
-                "Activator" => new Guid("7C172324-0B15-4DB8-B77F-C9FF75B72218"),
-                "Responsibility" => new Guid("AC23B6C8-8368-4F14-A11B-F0BC24CAF864"),
-                "Relator" => new Guid("6C9EB440-49DE-4DB5-9B4E-FA21F261D20E"),
+                "Connectedness" => new Guid(Connectedness),
+                "Individualization" => new Guid(Individualization),
+                "Learner" => new Guid(Learner),
+                "Focus" => new Guid(Focus),
+                "Achiever" => new Guid(Achiever),
+                "Self-Assurance" => new Guid(SelfAssurance),
+                "Futuristic" => new Guid(Futuristic),
+                "Activator" => new Guid(Activator),
+                "Responsibility" => new Guid(Responsibility),
+                "Relator" => new Guid(Relator),
                 _ => Guid.Empty
             };
+
+        public static string? SwitchStrenghtFromGuidToName(Guid strenghtId) =>
+            strenghtId.ToString() switch
+            {
+                Connectedness => nameof(Connectedness),
+                Individualization => nameof(Individualization),
+                Learner => nameof(Focus),
+                Focus => nameof(Focus),
+                Achiever => nameof(Achiever),
+                SelfAssurance => nameof(SelfAssurance),
+                Futuristic => nameof(Futuristic),
+                Activator => nameof(Activator),
+                Responsibility => nameof(Responsibility),
+                Relator => nameof(Relator),
+                _ => default
+            };
+
     }
 }
