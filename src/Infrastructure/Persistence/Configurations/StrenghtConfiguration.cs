@@ -1,12 +1,4 @@
-﻿using Application.Common.Interfaces;
-using Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.Common.Utilities;
 
 namespace Infrastructure.Persistence.Configurations
 {
@@ -24,7 +16,7 @@ namespace Infrastructure.Persistence.Configurations
             builder.HasData(
                 new Strenght()
                 {
-                    Id = Guid.NewGuid(),
+                    Id = new Guid(UtilitiesStrenght.Responsibility),
                     CreatedBy = guidUser,
                     CreatedDate = DateTime.Now,
                     ModifiedBy = guidUser,
@@ -33,7 +25,7 @@ namespace Infrastructure.Persistence.Configurations
                 },
                 new Strenght()
                 {
-                    Id = Guid.NewGuid(),
+                    Id = new Guid(UtilitiesStrenght.Achiever),
                     CreatedBy = guidUser,
                     CreatedDate = DateTime.Now,
                     ModifiedBy = guidUser,
@@ -42,7 +34,7 @@ namespace Infrastructure.Persistence.Configurations
                 },
                 new Strenght()
                 {
-                    Id = Guid.NewGuid(),
+                    Id = new Guid(UtilitiesStrenght.Focus),
                     CreatedBy = guidUser,
                     CreatedDate = DateTime.Now,
                     ModifiedBy = guidUser,
@@ -51,7 +43,7 @@ namespace Infrastructure.Persistence.Configurations
                 },
                 new Strenght()
                 {
-                    Id = Guid.NewGuid(),
+                    Id = new Guid(UtilitiesStrenght.Learner),
                     CreatedBy = guidUser,
                     CreatedDate = DateTime.Now,
                     ModifiedBy = guidUser,
@@ -60,7 +52,7 @@ namespace Infrastructure.Persistence.Configurations
                 },
                 new Strenght()
                 {
-                    Id = Guid.NewGuid(),
+                    Id = new Guid(UtilitiesStrenght.Individualization),
                     CreatedBy = guidUser,
                     CreatedDate = DateTime.Now,
                     ModifiedBy = guidUser,
@@ -69,7 +61,7 @@ namespace Infrastructure.Persistence.Configurations
                 },
                 new Strenght()
                 {
-                    Id = Guid.NewGuid(),
+                    Id = new Guid(UtilitiesStrenght.SelfAssurance),
                     CreatedBy = guidUser,
                     CreatedDate = DateTime.Now,
                     ModifiedBy = guidUser,
@@ -78,7 +70,7 @@ namespace Infrastructure.Persistence.Configurations
                 },
                 new Strenght()
                 {
-                    Id = Guid.NewGuid(),
+                    Id = new Guid(UtilitiesStrenght.Activator),
                     CreatedBy = guidUser,
                     CreatedDate = DateTime.Now,
                     ModifiedBy = guidUser,
@@ -87,7 +79,7 @@ namespace Infrastructure.Persistence.Configurations
                 },
                 new Strenght()
                 {
-                    Id = Guid.NewGuid(),
+                    Id = new Guid(UtilitiesStrenght.Futuristic),
                     CreatedBy = guidUser,
                     CreatedDate = DateTime.Now,
                     ModifiedBy = guidUser,
@@ -95,7 +87,7 @@ namespace Infrastructure.Persistence.Configurations
                     Name = "Futuristic"
                 }, new Strenght()
                 {
-                    Id = Guid.NewGuid(),
+                    Id = new Guid(UtilitiesStrenght.Connectedness),
                     CreatedBy = guidUser,
                     CreatedDate = DateTime.Now,
                     ModifiedBy = guidUser,
@@ -103,7 +95,7 @@ namespace Infrastructure.Persistence.Configurations
                     Name = "Connectedness"
                 }, new Strenght()
                 {
-                    Id = Guid.NewGuid(),
+                    Id = new Guid(UtilitiesStrenght.Relator),
                     CreatedBy = guidUser,
                     CreatedDate = DateTime.Now,
                     ModifiedBy = guidUser,

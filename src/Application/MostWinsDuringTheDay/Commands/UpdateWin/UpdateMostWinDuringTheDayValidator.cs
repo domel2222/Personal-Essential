@@ -16,7 +16,7 @@
                                                     .WithMessage($"{nameof(UpdateMostWinDuringTheDayCommand.StrenghtName)} {HelperValidator.NotNullOrEmpty}");
             RuleFor(x => x.StrenghtName).Custom((strenghtName, context) =>
             {
-                if (SwitchingStrenght.SwitchStrenghtFromNameToGuid(strenghtName) == Guid.Empty)
+                if (UtilitiesStrenght.SwitchStrenghtFromNameToGuid(strenghtName) == Guid.Empty)
                 {
                     context.AddFailure($"{nameof(UpdateMostWinDuringTheDayCommand.StrenghtName)}, {HelperValidator.NotExistInApplication}");
                 }

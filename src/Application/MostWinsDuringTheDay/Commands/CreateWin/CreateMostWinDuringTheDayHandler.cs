@@ -19,7 +19,7 @@
             {
                 Message = request.Message,
                 JournalId = request.JournalId,
-                StrenghtId = SwitchingStrenght.SwitchStrenghtFromNameToGuid(request.StrenghtName)
+                StrenghtId = UtilitiesStrenght.SwitchStrenghtFromNameToGuid(request.StrenghtName)
             };
             
             _mostWinDuringTheDayRepository.Insert(mostWin);

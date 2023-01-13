@@ -5,7 +5,7 @@
         public void Register(TypeAdapterConfig config)
         {
             config.NewConfig<MostWinDuringTheDay, MostWinDuringTheDayResponse>()
-                .Map(dest => dest.StrenghtName, src => SwitchingStrenght.SwitchStrenghtFromGuidToName(src.StrenghtId));         
+                .Map(dest => dest.StrenghtName, src => UtilitiesStrenght.SwitchStrenghtFromGuidToName(src.StrenghtId));         
         }
     }
 }

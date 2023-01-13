@@ -4,6 +4,7 @@ using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(PersonalDbContext))]
-    partial class PersonalDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230113132918_addColumnDateIntoMostWinDuringTheDay")]
+    partial class addColumnDateIntoMostWinDuringTheDay
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -236,92 +238,92 @@ namespace Infrastructure.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ac23b6c8-8368-4f14-a11b-f0bc24caf864"),
+                            Id = new Guid("63046af5-b5cb-4a47-90b6-0e0077ebae62"),
                             CreatedBy = new Guid("af855ff4-c3e3-4a5e-a5a8-6874bd2f7a31"),
-                            CreatedDate = new DateTime(2023, 1, 13, 14, 41, 55, 810, DateTimeKind.Local).AddTicks(6565),
+                            CreatedDate = new DateTime(2023, 1, 13, 14, 29, 18, 315, DateTimeKind.Local).AddTicks(9500),
                             ModifiedBy = new Guid("af855ff4-c3e3-4a5e-a5a8-6874bd2f7a31"),
-                            ModifiedDate = new DateTime(2023, 1, 13, 14, 41, 55, 810, DateTimeKind.Local).AddTicks(6596),
+                            ModifiedDate = new DateTime(2023, 1, 13, 14, 29, 18, 315, DateTimeKind.Local).AddTicks(9533),
                             Name = "Responsibility"
                         },
                         new
                         {
-                            Id = new Guid("cf52fcfb-df40-44da-869f-bcac271194d5"),
+                            Id = new Guid("8178eb3c-1370-4d56-92a4-3bafec7f8ff3"),
                             CreatedBy = new Guid("af855ff4-c3e3-4a5e-a5a8-6874bd2f7a31"),
-                            CreatedDate = new DateTime(2023, 1, 13, 14, 41, 55, 810, DateTimeKind.Local).AddTicks(6600),
+                            CreatedDate = new DateTime(2023, 1, 13, 14, 29, 18, 315, DateTimeKind.Local).AddTicks(9537),
                             ModifiedBy = new Guid("af855ff4-c3e3-4a5e-a5a8-6874bd2f7a31"),
-                            ModifiedDate = new DateTime(2023, 1, 13, 14, 41, 55, 810, DateTimeKind.Local).AddTicks(6602),
+                            ModifiedDate = new DateTime(2023, 1, 13, 14, 29, 18, 315, DateTimeKind.Local).AddTicks(9538),
                             Name = "Achiever"
                         },
                         new
                         {
-                            Id = new Guid("d33453c3-c880-4c5d-a4e9-bc3c6cc2c9a5"),
+                            Id = new Guid("b4dcb7c5-9b77-4ffb-89f8-39f814f5030b"),
                             CreatedBy = new Guid("af855ff4-c3e3-4a5e-a5a8-6874bd2f7a31"),
-                            CreatedDate = new DateTime(2023, 1, 13, 14, 41, 55, 810, DateTimeKind.Local).AddTicks(6604),
+                            CreatedDate = new DateTime(2023, 1, 13, 14, 29, 18, 315, DateTimeKind.Local).AddTicks(9541),
                             ModifiedBy = new Guid("af855ff4-c3e3-4a5e-a5a8-6874bd2f7a31"),
-                            ModifiedDate = new DateTime(2023, 1, 13, 14, 41, 55, 810, DateTimeKind.Local).AddTicks(6606),
+                            ModifiedDate = new DateTime(2023, 1, 13, 14, 29, 18, 315, DateTimeKind.Local).AddTicks(9542),
                             Name = "Focus"
                         },
                         new
                         {
-                            Id = new Guid("e4013a75-6d0c-40aa-bb38-b6fb69c95d20"),
+                            Id = new Guid("f22b00b8-ca74-46b1-bff3-f3f87c148a5a"),
                             CreatedBy = new Guid("af855ff4-c3e3-4a5e-a5a8-6874bd2f7a31"),
-                            CreatedDate = new DateTime(2023, 1, 13, 14, 41, 55, 810, DateTimeKind.Local).AddTicks(6609),
+                            CreatedDate = new DateTime(2023, 1, 13, 14, 29, 18, 315, DateTimeKind.Local).AddTicks(9545),
                             ModifiedBy = new Guid("af855ff4-c3e3-4a5e-a5a8-6874bd2f7a31"),
-                            ModifiedDate = new DateTime(2023, 1, 13, 14, 41, 55, 810, DateTimeKind.Local).AddTicks(6611),
+                            ModifiedDate = new DateTime(2023, 1, 13, 14, 29, 18, 315, DateTimeKind.Local).AddTicks(9546),
                             Name = "Learner"
                         },
                         new
                         {
-                            Id = new Guid("3a19987b-2eda-4645-91b5-b285b9113972"),
+                            Id = new Guid("1feffb16-65b9-4b79-8439-e7ab4093370d"),
                             CreatedBy = new Guid("af855ff4-c3e3-4a5e-a5a8-6874bd2f7a31"),
-                            CreatedDate = new DateTime(2023, 1, 13, 14, 41, 55, 810, DateTimeKind.Local).AddTicks(6614),
+                            CreatedDate = new DateTime(2023, 1, 13, 14, 29, 18, 315, DateTimeKind.Local).AddTicks(9583),
                             ModifiedBy = new Guid("af855ff4-c3e3-4a5e-a5a8-6874bd2f7a31"),
-                            ModifiedDate = new DateTime(2023, 1, 13, 14, 41, 55, 810, DateTimeKind.Local).AddTicks(6615),
+                            ModifiedDate = new DateTime(2023, 1, 13, 14, 29, 18, 315, DateTimeKind.Local).AddTicks(9585),
                             Name = "Individualization"
                         },
                         new
                         {
-                            Id = new Guid("d571a099-78a6-4a3a-9128-c24d1df7745a"),
+                            Id = new Guid("4ed23dc9-1d6f-4be2-b80b-ff9993fccba5"),
                             CreatedBy = new Guid("af855ff4-c3e3-4a5e-a5a8-6874bd2f7a31"),
-                            CreatedDate = new DateTime(2023, 1, 13, 14, 41, 55, 810, DateTimeKind.Local).AddTicks(6617),
+                            CreatedDate = new DateTime(2023, 1, 13, 14, 29, 18, 315, DateTimeKind.Local).AddTicks(9588),
                             ModifiedBy = new Guid("af855ff4-c3e3-4a5e-a5a8-6874bd2f7a31"),
-                            ModifiedDate = new DateTime(2023, 1, 13, 14, 41, 55, 810, DateTimeKind.Local).AddTicks(6619),
+                            ModifiedDate = new DateTime(2023, 1, 13, 14, 29, 18, 315, DateTimeKind.Local).AddTicks(9589),
                             Name = "Self-Assurance"
                         },
                         new
                         {
-                            Id = new Guid("7c172324-0b15-4db8-b77f-c9ff75b72218"),
+                            Id = new Guid("2c2395a8-1991-4d23-bab4-6747566d59ce"),
                             CreatedBy = new Guid("af855ff4-c3e3-4a5e-a5a8-6874bd2f7a31"),
-                            CreatedDate = new DateTime(2023, 1, 13, 14, 41, 55, 810, DateTimeKind.Local).AddTicks(6621),
+                            CreatedDate = new DateTime(2023, 1, 13, 14, 29, 18, 315, DateTimeKind.Local).AddTicks(9601),
                             ModifiedBy = new Guid("af855ff4-c3e3-4a5e-a5a8-6874bd2f7a31"),
-                            ModifiedDate = new DateTime(2023, 1, 13, 14, 41, 55, 810, DateTimeKind.Local).AddTicks(6623),
+                            ModifiedDate = new DateTime(2023, 1, 13, 14, 29, 18, 315, DateTimeKind.Local).AddTicks(9603),
                             Name = "Activator"
                         },
                         new
                         {
-                            Id = new Guid("103a482e-6e62-49e1-b2c9-c251e3955ed2"),
+                            Id = new Guid("e460205b-083e-4b2c-9e66-9bf6adc4680b"),
                             CreatedBy = new Guid("af855ff4-c3e3-4a5e-a5a8-6874bd2f7a31"),
-                            CreatedDate = new DateTime(2023, 1, 13, 14, 41, 55, 810, DateTimeKind.Local).AddTicks(6625),
+                            CreatedDate = new DateTime(2023, 1, 13, 14, 29, 18, 315, DateTimeKind.Local).AddTicks(9605),
                             ModifiedBy = new Guid("af855ff4-c3e3-4a5e-a5a8-6874bd2f7a31"),
-                            ModifiedDate = new DateTime(2023, 1, 13, 14, 41, 55, 810, DateTimeKind.Local).AddTicks(6626),
+                            ModifiedDate = new DateTime(2023, 1, 13, 14, 29, 18, 315, DateTimeKind.Local).AddTicks(9607),
                             Name = "Futuristic"
                         },
                         new
                         {
-                            Id = new Guid("2a308e97-5314-4104-a0c6-77c6d56121f1"),
+                            Id = new Guid("1c1abd48-244e-4308-aa50-5a58156791ee"),
                             CreatedBy = new Guid("af855ff4-c3e3-4a5e-a5a8-6874bd2f7a31"),
-                            CreatedDate = new DateTime(2023, 1, 13, 14, 41, 55, 810, DateTimeKind.Local).AddTicks(6629),
+                            CreatedDate = new DateTime(2023, 1, 13, 14, 29, 18, 315, DateTimeKind.Local).AddTicks(9609),
                             ModifiedBy = new Guid("af855ff4-c3e3-4a5e-a5a8-6874bd2f7a31"),
-                            ModifiedDate = new DateTime(2023, 1, 13, 14, 41, 55, 810, DateTimeKind.Local).AddTicks(6630),
+                            ModifiedDate = new DateTime(2023, 1, 13, 14, 29, 18, 315, DateTimeKind.Local).AddTicks(9611),
                             Name = "Connectedness"
                         },
                         new
                         {
-                            Id = new Guid("6c9eb440-49de-4db5-9b4e-fa21f261d20e"),
+                            Id = new Guid("878e3ceb-6b7e-4a7a-900d-336296fbe4bb"),
                             CreatedBy = new Guid("af855ff4-c3e3-4a5e-a5a8-6874bd2f7a31"),
-                            CreatedDate = new DateTime(2023, 1, 13, 14, 41, 55, 810, DateTimeKind.Local).AddTicks(6633),
+                            CreatedDate = new DateTime(2023, 1, 13, 14, 29, 18, 315, DateTimeKind.Local).AddTicks(9613),
                             ModifiedBy = new Guid("af855ff4-c3e3-4a5e-a5a8-6874bd2f7a31"),
-                            ModifiedDate = new DateTime(2023, 1, 13, 14, 41, 55, 810, DateTimeKind.Local).AddTicks(6634),
+                            ModifiedDate = new DateTime(2023, 1, 13, 14, 29, 18, 315, DateTimeKind.Local).AddTicks(9615),
                             Name = "Relator"
                         });
                 });
@@ -373,12 +375,12 @@ namespace Infrastructure.Persistence.Migrations
                         {
                             Id = new Guid("af855ff4-c3e3-4a5e-a5a8-6874bd2f7a31"),
                             CreatedBy = new Guid("af855ff4-c3e3-4a5e-a5a8-6874bd2f7a31"),
-                            CreatedDate = new DateTime(2023, 1, 13, 14, 41, 55, 810, DateTimeKind.Local).AddTicks(6890),
+                            CreatedDate = new DateTime(2023, 1, 13, 14, 29, 18, 315, DateTimeKind.Local).AddTicks(9882),
                             Email = "domel2222@gmail.com",
                             FirstName = "Dominik",
                             LastName = "Wikliński",
                             ModifiedBy = new Guid("af855ff4-c3e3-4a5e-a5a8-6874bd2f7a31"),
-                            ModifiedDate = new DateTime(2023, 1, 13, 14, 41, 55, 810, DateTimeKind.Local).AddTicks(6895)
+                            ModifiedDate = new DateTime(2023, 1, 13, 14, 29, 18, 315, DateTimeKind.Local).AddTicks(9886)
                         });
                 });
 

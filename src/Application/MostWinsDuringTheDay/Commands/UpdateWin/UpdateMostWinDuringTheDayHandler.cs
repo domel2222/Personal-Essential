@@ -28,7 +28,7 @@ namespace Application.MostWinsDuringTheDay.Commands.UpdateWin
             }
 
             mostWin.Message = request.Message;
-            mostWin.StrenghtId = SwitchingStrenght.SwitchStrenghtFromNameToGuid(request.StrenghtName);
+            mostWin.StrenghtId = UtilitiesStrenght.SwitchStrenghtFromNameToGuid(request.StrenghtName);
 
             await _unitOfWork.SaveChangesAsync(cancellationToken);
 
