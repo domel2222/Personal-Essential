@@ -12,6 +12,7 @@
             services.AddScoped<IJournalRepository, JournalRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ISelfAssessmentValueRepository, SelfAssessmentValueRepository>();
+            services.AddScoped<IMostWinDuringTheDayRepository, MostWinDuringTheDayRepository>();
             
             return services;
         }

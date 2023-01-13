@@ -1,9 +1,4 @@
-﻿using Application.Contracts.Assessments;
-using Application.SelfAssessments.Commands;
-using Application.SelfAssessments.Commands.DeleteSelfAssessmentValue;
-using Application.SelfAssessments.Commands.UpdateSelfAssessmentValue;
-
-namespace Presentation.Controllers
+﻿namespace Presentation.Controllers
 {
     [ApiController]
     [Route("api/assessments")]

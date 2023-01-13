@@ -29,5 +29,6 @@
 
             return _mapper.Map<JournalResponse>(journal);
         }
+
     }
 }

@@ -21,8 +21,7 @@ namespace PersonalManagment.Api.Middleware
             {
                 _logger.LogError(exception, exception.Message);
                 await HandleExceptionAsync(context, exception);
-            }
-            
+            }  
         }
 
         private static async Task HandleExceptionAsync(HttpContext httpContext, Exception exception)

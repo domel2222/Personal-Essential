@@ -26,7 +26,7 @@ namespace Application.Common.Behaviours
                                     .Select(validator => validator.Validate(context))
                                     .SelectMany(validationResult => validationResult.Errors)
                                     .Where(validationFailure => validationFailure != null)
-                                    .Select(failure 
+                                    .Select(failure
                                         => new Error(
                                         failure.PropertyName,
                                         failure.ErrorMessage))

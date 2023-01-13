@@ -2,7 +2,7 @@
 
 namespace Application.SelfAssessments.Commands
 {
-    public class CreateSelfAssessmentCommandHandler : ICommandHandler<CreateSelfAssessmentCommand, SelfAssessmentValueResponse>
+    public sealed class CreateSelfAssessmentCommandHandler : ICommandHandler<CreateSelfAssessmentCommand, SelfAssessmentValueResponse>
     {
         private readonly ISelfAssessmentValueRepository _selfAssessmentValueRepository;
         private readonly IUnitOfWork _unitOfWork;

@@ -1,11 +1,4 @@
-﻿using Application.Contracts.Assessments;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Application.SelfAssessments.Commands
+﻿namespace Application.SelfAssessments.Commands
 {
     public sealed record  CreateSelfAssessmentCommand(
      double DeepWorkResult,

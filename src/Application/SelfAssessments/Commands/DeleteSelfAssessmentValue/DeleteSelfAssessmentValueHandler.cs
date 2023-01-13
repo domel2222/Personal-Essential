@@ -15,7 +15,7 @@
         {
             var assassment = await _selfAssessmentValueRepository.GetByIdAsync(request.SelfAssessmentValueId, cancellationToken);
 
-            if (assassment == null)
+            if (assassment != null)
             {
                 _selfAssessmentValueRepository.Remove(assassment);
                 await _unitOfWork.SaveChangesAsync(cancellationToken);

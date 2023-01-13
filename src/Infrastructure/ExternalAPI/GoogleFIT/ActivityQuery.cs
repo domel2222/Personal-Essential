@@ -51,7 +51,7 @@
         //public Task<StepsData> GetQueryStepsAsync(DateTime start, DateTime end)
         {
             var request = CreateRequest(start, end);
-            var response = ExecuteRequestAsync(request);
+            var response =  ExecuteRequestAsync(request);
 
             return (IQueryable<StepsDataPoint>) response
                     .Result
