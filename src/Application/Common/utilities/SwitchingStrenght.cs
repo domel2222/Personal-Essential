@@ -12,6 +12,7 @@
         private const string Activator = "7C172324-0B15-4DB8-B77F-C9FF75B72218";
         private const string Responsibility = "AC23B6C8-8368-4F14-A11B-F0BC24CAF864";
         private const string Relator = "6C9EB440-49DE-4DB5-9B4E-FA21F261D20E";
+
         public static Guid SwitchStrenghtFromNameToGuid(string strenghtName) =>
             strenghtName switch
             {

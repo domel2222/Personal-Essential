@@ -1,7 +1,4 @@
-﻿using Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-
-namespace Infrastructure.Persistence.Repositories
+﻿namespace Infrastructure.Persistence.Repositories
 {
     public sealed class UserRepository : BaseRepository<User>, IUserRepository
     {

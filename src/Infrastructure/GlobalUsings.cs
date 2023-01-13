@@ -15,7 +15,8 @@ global using Domain.Repositories;
 global using Infrastructure.Persistence.Repositories;
 global using Domain.Common;
 global using Microsoft.EntityFrameworkCore;
-
+global using Domain.Entities;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Infrastructure
 {
 
