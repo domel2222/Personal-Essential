@@ -7,8 +7,9 @@
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviourSecond<,>));
-
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviorSecond<,>));
+           // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviorPipeline<,>));
+            //services.AddTransient(typeof(IRequestPreProcessor<>), typeof(LoggingBehavior<>));
 
             //Mapster settings
             var config = TypeAdapterConfig.GlobalSettings;
