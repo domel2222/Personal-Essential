@@ -6,7 +6,16 @@
         {
         }
 
-        public async Task<IEnumerable<Journal>> GetJournalByUserIdAndDateAsync(Guid userId, DateTime diaryDate, CancellationToken cancellationToken)
+        public async Task<IReadOnlyCollection<Journal>> GetAllJournalsByUserId(Guid userId, CancellationToken cancellationToken = default)
+        {
+            return await _personalDbContext.Journals
+                                                .AsNoTracking()
+                                                .Where(user => user.UserId == userId
+                                                 && user.InactivatedDate == null)
+                                                .ToListAsync(cancellationToken);
+        }
+
+        public async Task<IReadOnlyCollection<Journal>> GetJournalByUserIdAndDateAsync(Guid userId, DateTime diaryDate, CancellationToken cancellationToken)
         {
             return await _personalDbContext.Journals
                                                 .AsNoTracking()
@@ -15,5 +24,6 @@
                                                 && x.InactivatedDate == null)
                                                 .ToListAsync(cancellationToken);
         }
+
     }
 }

@@ -1,11 +1,11 @@
-﻿
-namespace Application.Users.Commands.CreateUser
+﻿namespace Application.Users.Commands.CreateUser
 {
     public class CreateUserCommandHandler : ICommandHandler<CreateUserCommand, UserResponse>
     //public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand>
     {
         private readonly IUserRepository _userRepository;
         private readonly IUnitOfWork _unitOfWork;
+
         public CreateUserCommandHandler(IUserRepository userRepository, IUnitOfWork unitOfWork)
         {
             _userRepository = userRepository;

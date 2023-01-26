@@ -1,4 +1,4 @@
-﻿namespace Application.Journals.Queries.GetUserJournalsInSpecificDate
+﻿namespace Application.Journals.Queries.GetJournalsInSpecificDate
 {
     public sealed class GetJournalsInSpecificDateQueryHandler : IQueryHandler<GetJournalsInSpecificDateQuery, List<JournalResponse>>
     {
@@ -14,7 +14,6 @@
         public async Task<List<JournalResponse>> Handle(GetJournalsInSpecificDateQuery request, CancellationToken cancellationToken)
         {
             var journals = await _journalRepository.GetJournalByUserIdAndDateAsync(request.UserId, request.DiaryDate, cancellationToken);
-
 
             return _mapper.Map<List<JournalResponse>>(journals);
         }

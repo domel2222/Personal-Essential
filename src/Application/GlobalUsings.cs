@@ -16,6 +16,7 @@ global using Application.Common.Behaviours;
 global using Microsoft.Extensions.DependencyInjection;
 global using System.Reflection;
 global using Application.Common.Utilities;
+global using Application.Common.Interfaces;
 
 namespace Application
 {
