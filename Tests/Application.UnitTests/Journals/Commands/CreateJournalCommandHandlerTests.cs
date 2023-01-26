@@ -25,7 +25,9 @@ namespace Application.UnitTests.Journals.Commands
         [Fact]
         public async void Handle_ForGivenValidCommand_ShouldCreateJournal_OnceTime()
         {
+            var userId = new Guid("fa567cd5-1c9a-4313-aeb9-3f26f5c33d5f");
             var guid = new Guid("8316ad31-e815-41d6-9d00-26392977132a");
+            var journalId = new Guid("92ad89df-d618-4b8c-a369-b701de2afe51");
             //var sampleId = Guid("");
             //arrange
             var command = new CreateJournalCommand
@@ -43,6 +45,7 @@ namespace Application.UnitTests.Journals.Commands
             //    UserId = command.Userid
             //};
 
+            var allJournalsBeforeCount = (await _mockJournalRepository.Object.GetAllJournalsByUserId(userId, CancellationToken.None)).Count();
 
             //var journalsCount = _mockJournalRepository.Invocations.Count(x => x.Method.Name == "Insert");
 
@@ -59,22 +62,28 @@ namespace Application.UnitTests.Journals.Commands
             //var response = await _handler.Handle(command, CancellationToken.None);
 
             
-            //var result = await _handler.Handle(command, CancellationToken.None);
-
+            var result = await _handler.Handle(command, CancellationToken.None);
+            var allJournalsForUser = await _mockJournalRepository.Object.GetAllJournalsByUserId(userId, CancellationToken.None);
             ////assert
 
             //Add method get all
             //_mockJournalRepository.Verify(r => r.Insert(It.Is<Journal>(j => j.Title == expectedJournal.Title && j.UserId == expectedJournal.UserId)), Times.Once);
 
-            //_mockUnitOfWork.Verify(u => u.SaveChangesAsync(CancellationToken.None), Times.Once);
+
             //await _mockJournalRepository.Object.
 
 
             //response.Should().BeOfType<JournalResponse>();
 
-            var mockJournalRepository = RepositoryJournalMock.GetJournalRepository();
-            int journalCount = mockJournalRepository.Invocations.Count(x => x.Method.Name == "Insert");
-            Assert.Equal(4, journalCount);
+            //assert
+            _mockUnitOfWork.Verify(u => u.SaveChangesAsync(CancellationToken.None), Times.Once);
+
+           
+            result.UserId.Should().NotBeEmpty();   
+            allJournalsForUser.Should().HaveCount(allJournalsBeforeCount + 1);
+            //var mockJournalRepository = RepositoryJournalMock.GetJournalRepository();
+            //int journalCount = mockJournalRepository.Invocations.Count(x => x.Method.Name == "Insert");
+            //Assert.Equal(4, journalCount);
             
         }
     }

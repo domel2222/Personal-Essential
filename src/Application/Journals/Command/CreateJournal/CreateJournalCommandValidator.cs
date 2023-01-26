@@ -1,12 +1,4 @@
-﻿using Application.Common.Utilities;
-using Application.Journals.Queries.GetUserJournalsInSpecificDate;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Application.Journals.Command.CreateJournal
+﻿namespace Application.Journals.Command.CreateJournal
 {
     public sealed class CreateJournalCommandValidator : AbstractValidator<CreateJournalCommand>
     {

@@ -11,7 +11,12 @@
             var mockJournalRepository = new Mock<IJournalRepository>();
 
             mockJournalRepository.Setup(repo => 
-            repo.GetByIdAsync(It.IsAny<Guid>(), It.IsAny<CancellationToken>())).ReturnsAsync(
+            repo.GetAllJournalsByUserId(It.IsAny<Guid>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(journals);
+
+            mockJournalRepository.Setup(repo => 
+            repo.GetByIdAsync(It.IsAny<Guid>(),It.IsAny<CancellationToken>()))
+                .ReturnsAsync(
                 (Guid Id, CancellationToken cancellationToken) =>
                 {
                     var journal = journals.FirstOrDefault(j => j.Id == Id);

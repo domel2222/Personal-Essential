@@ -1,6 +1,6 @@
 ﻿namespace Application.Journals.Queries.GetJournalList
 {
-    public sealed record GetJournalsListQuery : IRequest<List<Journal>>
+    public sealed record GetJournalsListQuery : IQuery<List<JournalResponse>>
     {
     }
 }

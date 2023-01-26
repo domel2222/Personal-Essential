@@ -17,7 +17,7 @@
         {
             var journals = await _journalRepository.GetAllJournalsByUserId(_currentUserService.guidUser, cancellationToken);
 
-            return _mapper.Map<List<JournalResponse>(journals);
+            return _mapper.Map<List<JournalResponse>>(journals);
         }
     }
 }
