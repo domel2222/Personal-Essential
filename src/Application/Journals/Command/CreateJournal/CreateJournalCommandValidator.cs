@@ -15,7 +15,7 @@
 
             RuleFor(x => x.Diarydate).Custom((diaryDate, context) =>
             {
-            if (!diaryDate.CompareDateToLocalTime())
+                if (!diaryDate.CompareDateToLocalTime())
                 {
                     context.AddFailure($"{nameof(CreateJournalCommand.Title)} :", $" {HelperValidator.CorrectDate}");
                 }
@@ -25,6 +25,5 @@
                                              .NotEmpty()
                                              .WithMessage($"{nameof(CreateJournalCommand.Userid)} {HelperValidator.NotNullOrEmpty}");
         }
-
     }
 }

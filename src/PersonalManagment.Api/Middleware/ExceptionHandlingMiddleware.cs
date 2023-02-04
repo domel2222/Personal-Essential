@@ -1,6 +1,4 @@
-﻿using Azure;
-using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using Newtonsoft.Json;
 using ApplicationException = Domain.Exceptions.ApplicationException;
 using Error = Domain.Shared.Error;
 

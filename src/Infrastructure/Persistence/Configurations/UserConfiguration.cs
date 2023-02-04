@@ -42,7 +42,7 @@ namespace Infrastructure.Persistence.Configurations
                     .WithOne(s => s.User)
                     .HasForeignKey(s => s.UserId)
                     .OnDelete(DeleteBehavior.ClientCascade);
-           
+          
         }
     }
 }

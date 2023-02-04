@@ -2,20 +2,18 @@
 {
     public static class RepositoryJournalMock
     {
-        
-        public static Mock<IJournalRepository> GetJournalRepository() 
+        public static Mock<IJournalRepository> GetJournalRepository()
         {
             var journals = GetJournals();
 
-            
             var mockJournalRepository = new Mock<IJournalRepository>();
 
-            mockJournalRepository.Setup(repo => 
+            mockJournalRepository.Setup(repo =>
             repo.GetAllJournalsByUserId(It.IsAny<Guid>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(journals);
 
-            mockJournalRepository.Setup(repo => 
-            repo.GetByIdAsync(It.IsAny<Guid>(),It.IsAny<CancellationToken>()))
+            mockJournalRepository.Setup(repo =>
+            repo.GetByIdAsync(It.IsAny<Guid>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(
                 (Guid Id, CancellationToken cancellationToken) =>
                 {
@@ -75,4 +73,3 @@
         }
     }
 }
-
