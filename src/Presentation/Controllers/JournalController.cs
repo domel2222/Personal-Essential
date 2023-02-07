@@ -32,9 +32,16 @@
         {
             var command = journalRequest.Adapt<CreateJournalCommand>();
 
-            var journal = await _sender.Send(command, cancellationToken);
+            var journalResult = await _sender.Send(command, cancellationToken);
 
-            return Created($"api/journals/{journal.UserId}", null);
+            if (journalResult.Success)
+            {
+                return Created($"api/journals/{journalResult.Success}", null);
+            }
+            else
+            {
+               return BadRequest(journalResult.Errors);
+            }
         }
 
         [HttpPut("{journalId:Guid}")]

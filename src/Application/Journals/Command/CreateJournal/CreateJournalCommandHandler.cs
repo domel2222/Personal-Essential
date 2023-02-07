@@ -1,6 +1,6 @@
 ﻿namespace Application.Journals.Command.CreateJournal
 {
-    public sealed class CreateJournalCommandHandler : ICommandHandler<CreateJournalCommand, JournalResponse>
+    public sealed class CreateJournalCommandHandler : ICommandHandler<CreateJournalCommand, Result<JournalResponse>>
     {
         private readonly IJournalRepository _journalRepository;
         private readonly IUnitOfWork _unitOfWork;
@@ -13,8 +13,16 @@
             _mapper = mapper;
         }
 
-        public async Task<JournalResponse> Handle(CreateJournalCommand request, CancellationToken cancellationToken)
+        public async Task<Result<JournalResponse>> Handle(CreateJournalCommand request, CancellationToken cancellationToken)
         {
+            var validator = new CreateJournalCommandValidator();
+            var validationResult = await validator.ValidateAsync(request);
+
+            if (!validationResult.IsValid)
+            {
+                return Utilities.CreateValidationErrorList<JournalResponse>(validationResult);
+            }
+
             var journal = new Journal
             {
                 Title = request.Title,
@@ -27,8 +35,7 @@
 
             await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-            return _mapper.Map<JournalResponse>(journal);
+            return Result<JournalResponse>.Succeed(_mapper.Map<JournalResponse>(journal));
         }
-
     }
 }

@@ -1,6 +1,4 @@
-﻿using Application.Journals.Command.CreateJournal;
-
-namespace Application.Journals.Command.DeleteJournal
+﻿namespace Application.Journals.Command.DeleteJournal
 {
     public class DeleteJournalCommandValidator : AbstractValidator<DeleteJournalCommand>
     {

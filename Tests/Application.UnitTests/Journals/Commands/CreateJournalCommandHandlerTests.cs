@@ -1,7 +1,3 @@
-using Application.Journals.Command.CreateJournal;
-using Application.UnitTests.Mocks;
-using MapsterMapper;
-
 namespace Application.UnitTests.Journals.Commands
 {
     public class CreateJournalCommandHandlerTests
@@ -11,9 +7,9 @@ namespace Application.UnitTests.Journals.Commands
         private readonly IMapper _mapper;
         private readonly CreateJournalCommandHandler _handler;
 
-        private readonly Guid userId = new Guid("fa567cd5-1c9a-4313-aeb9-3f26f5c33d5f");
-        private readonly Guid guidUserForCommand = new Guid("8316ad31-e815-41d6-9d00-26392977132a");
-        private readonly Guid journalId = new Guid("92ad89df-d618-4b8c-a369-b701de2afe51");
+        private readonly Guid _userId = new Guid("fa567cd5-1c9a-4313-aeb9-3f26f5c33d5f");
+        private readonly Guid _guidUserForCommand = new Guid("8316ad31-e815-41d6-9d00-26392977132a");
+        private readonly Guid _journalId = new Guid("92ad89df-d618-4b8c-a369-b701de2afe51");
 
         public CreateJournalCommandHandlerTests()
         {
@@ -34,7 +30,7 @@ namespace Application.UnitTests.Journals.Commands
                 "My Journal",
                 "Today was a great day.",
                 DateTime.Now,
-                guidUserForCommand
+                _guidUserForCommand
             );
             //var expectedJournal = new Journal
             //{
@@ -44,7 +40,7 @@ namespace Application.UnitTests.Journals.Commands
             //    UserId = command.Userid
             //};
 
-            var allJournalsBeforeCount = (await _mockJournalRepository.Object.GetAllJournalsByUserId(userId, CancellationToken.None)).Count();
+            var allJournalsBeforeCount = (await _mockJournalRepository.Object.GetAllJournalsByUserId(_userId, CancellationToken.None)).Count();
 
             //var journalsCount = _mockJournalRepository.Invocations.Count(x => x.Method.Name == "Insert");
 
@@ -60,7 +56,7 @@ namespace Application.UnitTests.Journals.Commands
             //var response = await _handler.Handle(command, CancellationToken.None);
 
             var result = await _handler.Handle(command, CancellationToken.None);
-            var allJournalsForUser = await _mockJournalRepository.Object.GetAllJournalsByUserId(userId, CancellationToken.None);
+            var allJournalsForUser = await _mockJournalRepository.Object.GetAllJournalsByUserId(_userId, CancellationToken.None);
             ////assert
 
             //Add method get all
@@ -71,8 +67,8 @@ namespace Application.UnitTests.Journals.Commands
             //response.Should().BeOfType<JournalResponse>();
 
             //assert
+            result.Value.UserId.Should().Be(command.Userid);
             _mockUnitOfWork.Verify(u => u.SaveChangesAsync(CancellationToken.None), Times.Once);
-            result.UserId.Should().NotBeEmpty();
             allJournalsForUser.Should().HaveCount(allJournalsBeforeCount + 1);
 
             //var mockJournalRepository = RepositoryJournalMock.GetJournalRepository();
@@ -81,24 +77,25 @@ namespace Application.UnitTests.Journals.Commands
         }
 
         [Fact]
-        public async void Handle_ForGivenInValidCommand_ShouldNotCreateJournal_()
+        public async void Handle_ForGivenInValidCommand_ShouldNotCreateJournal_InvokeSaveChangesNever()
         {
             //arrange
             var commandInvalid = new CreateJournalCommand
             (
                 "Newst Journal",
                 "",
-                DateTime.Now,
-                guidUserForCommand
+                DateTime.Now.AddDays(1),
+                _guidUserForCommand
             );
 
             //act
-            var allJournalsBeforeCount = (await _mockJournalRepository.Object.GetAllJournalsByUserId(guidUserForCommand, CancellationToken.None)).Count();
+            var allJournalsBeforeCount = (await _mockJournalRepository.Object.GetAllJournalsByUserId(_guidUserForCommand, CancellationToken.None)).Count();
             var result = await _handler.Handle(commandInvalid, CancellationToken.None);
 
             //assert
 
-            var allJournalsForUser = await _mockJournalRepository.Object.GetAllJournalsByUserId(guidUserForCommand, CancellationToken.None);
+            var allJournalsForUser = await _mockJournalRepository.Object.GetAllJournalsByUserId(_guidUserForCommand, CancellationToken.None);
+
             _mockUnitOfWork.Verify(u => u.SaveChangesAsync(CancellationToken.None), Times.Never);
         }
     }

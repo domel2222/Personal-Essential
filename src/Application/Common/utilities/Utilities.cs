@@ -10,5 +10,15 @@
 
             return (incomingDateOnly <= localDateOnly);
         }
+
+        public static Result<T> CreateValidationErrorList<T>(ValidationResult validationResult)
+        {
+            return Result<T>.Fail(validationResult.Errors
+                                                        .Where(validationFailure => validationFailure != null)
+                                                        .Select(failure =>
+                                                        new Error(failure.PropertyName, failure.ErrorMessage))
+                                                        .Distinct()
+                                                        .ToList());
+        }
     }
 }

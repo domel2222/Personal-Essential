@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace Domain.Shared
 {
@@ -16,7 +11,7 @@ namespace Domain.Shared
         }
 
         public string Code { get; }
-        public string Message{ get; }
+        public string Message { get; }
 
         public static implicit operator string(Error error) => error.Code;
 

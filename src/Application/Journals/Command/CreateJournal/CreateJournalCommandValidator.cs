@@ -17,7 +17,7 @@
             {
                 if (!diaryDate.CompareDateToLocalTime())
                 {
-                    context.AddFailure($"{nameof(CreateJournalCommand.Title)} :", $" {HelperValidator.CorrectDate}");
+                    context.AddFailure($"{nameof(CreateJournalCommand.Diarydate)}", $" {HelperValidator.CorrectDate}");
                 }
             });
 

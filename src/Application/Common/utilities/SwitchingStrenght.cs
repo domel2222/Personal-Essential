@@ -7,7 +7,7 @@
         public const string Learner = "E4013A75-6D0C-40AA-BB38-B6FB69C95D20";
         public const string Focus = "D33453C3-C880-4C5D-A4E9-BC3C6CC2C9A5";
         public const string Achiever = "CF52FCFB-DF40-44DA-869F-BCAC271194D5";
-        public const string SelfAssurance  = "D571A099-78A6-4A3A-9128-C24D1DF7745A";
+        public const string SelfAssurance = "D571A099-78A6-4A3A-9128-C24D1DF7745A";
         public const string Futuristic = "103A482E-6E62-49E1-B2C9-C251E3955ED2";
         public const string Activator = "7C172324-0B15-4DB8-B77F-C9FF75B72218";
         public const string Responsibility = "AC23B6C8-8368-4F14-A11B-F0BC24CAF864";
@@ -44,6 +44,5 @@
                 Relator => nameof(Relator),
                 _ => default
             };
-
     }
 }

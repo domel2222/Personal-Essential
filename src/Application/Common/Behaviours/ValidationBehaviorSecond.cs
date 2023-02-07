@@ -1,5 +1,4 @@
-﻿using Domain.Shared;
-using ValidationException = Application.Common.Exceptions.ValidationException;
+﻿using ValidationException = Application.Common.Exceptions.ValidationException;
 
 namespace Application.Common.Behaviours
 {

@@ -2,26 +2,24 @@
 {
     public class Result<T>
     {
-        public bool Success { get; init; }
-        public T Value { get; init; }
+        public bool Success { get;}
+        public T Value { get; }
 
-        //public List<Error> Error{get; set;}
-        public string Error { get; }
+        public IEnumerable<Error> Errors { get; set; }
 
-        public Result(bool success, T value, string error) 
+        public Result(bool success, T value, IEnumerable<Error> error) 
         {  
-            
             Success = success; 
             Value = value;
-            Error = error;
+            Errors = error;
         }
 
-        public static Result<T>Successful (T value)
+        public static Result<T>Succeed(T value)
         {
             return new Result<T>(true, value, null);
         }
 
-        public static Result<T> Failed(string error)
+        public static Result<T>Fail(IEnumerable<Error> error)
         {
             return new Result<T>(false, default(T), error);
         }
