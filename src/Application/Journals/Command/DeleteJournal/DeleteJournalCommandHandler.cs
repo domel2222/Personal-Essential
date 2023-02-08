@@ -15,7 +15,7 @@
         {
             var journal = await _journalRepository.GetByIdAsync(request.JournalId, cancellationToken);
 
-            if (journal != null)
+            if (journal is not null)
             {
                 _journalRepository.Remove(journal);
                 await _unitOfWork.SaveChangesAsync(cancellationToken);
