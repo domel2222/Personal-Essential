@@ -1,17 +1,23 @@
+using Application.Common.Interfaces;
+using FluentValidation;
+
 namespace Application.UnitTests.Journals.Commands
 {
     public class CreateJournalCommandHandlerTests : BaseJournalCommandHandlerTests
     {
         private readonly IMapper _mapper;
+        private readonly IJournalCommandValidator<CreateJournalCommand> _validator;
         private readonly CreateJournalCommandHandler _handler;
         private readonly Guid _guidUserForCommand = new Guid("8316ad31-e815-41d6-9d00-26392977132a");
 
         public CreateJournalCommandHandlerTests()
         {
+            _validator = new CreateJournalCommandValidator();
             _mapper = AddMapsterForUnitTests.GetMapper();
             _handler = new CreateJournalCommandHandler(_mockJournalRepository.Object,
                                                             _mockUnitOfWork.Object,
-                                                               _mapper);
+                                                                _mapper,
+                                                             _validator);
         }
 
         [Fact]

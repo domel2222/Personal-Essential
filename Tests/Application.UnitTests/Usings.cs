@@ -6,3 +6,7 @@ global using Domain.Repositories;
 global using Application.Journals.Command.CreateJournal;
 global using Application.UnitTests.Mocks;
 global using MapsterMapper;
+global using Mapster;
+global using Application.Journals.Command.DeleteJournal;
+global using Domain.Shared;
+global using MediatR;

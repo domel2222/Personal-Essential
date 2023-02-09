@@ -1,6 +1,6 @@
 ﻿namespace Application.Journals.Command.DeleteJournal
 {
-    public sealed class DeleteJournalCommandHandler : ICommandHandler<DeleteJournalCommand, Unit>
+    public sealed class DeleteJournalCommandHandler : ICommandHandler<DeleteJournalCommand, Result<Unit>>
     {
         private readonly IJournalRepository _journalRepository;
         private readonly IUnitOfWork _unitOfWork;
@@ -11,17 +11,28 @@
             _journalRepository = journalRepository;
         }
 
-        public async Task<Unit> Handle(DeleteJournalCommand request, CancellationToken cancellationToken)
+        public async Task<Result<Unit>> Handle(DeleteJournalCommand request, CancellationToken cancellationToken)
         {
-            var journal = await _journalRepository.GetByIdAsync(request.JournalId, cancellationToken);
+            var validator = new DeleteJournalCommandValidator();
+            var validationResult = await validator.ValidateAsync(request);
 
-            if (journal is not null)
+            if (!validationResult.IsValid)
             {
-                _journalRepository.Remove(journal);
-                await _unitOfWork.SaveChangesAsync(cancellationToken);
+                return Utilities.CreateValidationErrorList<Unit>(validationResult);
             }
 
-            return Unit.Value;
+            var journal = await _journalRepository.GetByIdAsync(request.JournalId, cancellationToken);
+
+            if(journal == null)
+            {
+                throw new JournalNotFoundException(request.JournalId);
+            }
+
+            _journalRepository.Remove(journal);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
+
+
+            return Result<Unit>.Succeed(Unit.Value);
         }
     }
 }

@@ -1,9 +1,4 @@
-﻿using Application.Journals.Command.DeleteJournal;
-using Domain.Entities;
-using Domain.Shared;
-using MediatR;
-
-namespace Application.UnitTests.Journals.Commands
+﻿namespace Application.UnitTests.Journals.Commands
 {
     public class DeleteJournalCommandHandlerTests : BaseJournalCommandHandlerTests
     {
@@ -28,7 +23,7 @@ namespace Application.UnitTests.Journals.Commands
             var allJournaForUser = await _mockJournalRepository.Object.GetAllJournalsByUserId(_userId, cancellationToken: CancellationToken.None);
 
             //assert
-            result.Should().BeOfType<Unit>();
+            result.Should().BeOfType<Result<Unit>>();
             allJournaForUser.Should().HaveCount(allJournalsBeforeCount - 1);
             _mockUnitOfWork.Verify(u => u.SaveChangesAsync(CancellationToken.None), Times.Once);
 
@@ -48,7 +43,7 @@ namespace Application.UnitTests.Journals.Commands
             var allJournaForUser = await _mockJournalRepository.Object.GetAllJournalsByUserId(_userId, cancellationToken: CancellationToken.None);
 
             //assert
-            result.Should().BeOfType<Unit>();
+            result.Should().BeOfType<Result<Unit>>();
             allJournaForUser.Should().HaveCount(allJournalsBeforeCount);
             _mockUnitOfWork.Verify(u => u.SaveChangesAsync(CancellationToken.None), Times.Never);
         }

@@ -5,18 +5,23 @@
         private readonly IJournalRepository _journalRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly ICommandValidator<CreateJournalCommand> _validator;
 
-        public CreateJournalCommandHandler(IJournalRepository journalRepository, IUnitOfWork unitOfWork, IMapper mapper)
+        public CreateJournalCommandHandler(
+                        IJournalRepository journalRepository, 
+                        IUnitOfWork unitOfWork, 
+                        IMapper mapper, 
+                        ICommandValidator<CreateJournalCommand> validator)
         {
             _journalRepository = journalRepository;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _validator = validator;
         }
 
         public async Task<Result<JournalResponse>> Handle(CreateJournalCommand request, CancellationToken cancellationToken)
         {
-            var validator = new CreateJournalCommandValidator();
-            var validationResult = await validator.ValidateAsync(request);
+            var validationResult = await _validator.ValidateAsync(request);
 
             if (!validationResult.IsValid)
             {

@@ -1,6 +1,6 @@
 ﻿namespace Application.Journals.Command.CreateJournal
 {
-    public sealed class CreateJournalCommandValidator : AbstractValidator<CreateJournalCommand>
+    public sealed class CreateJournalCommandValidator : AbstractValidator<CreateJournalCommand>, IJournalCommandValidator<CreateJournalCommand>
     {
         public CreateJournalCommandValidator()
         {
@@ -24,6 +24,11 @@
             RuleFor(x => x.Userid)
                                              .NotEmpty()
                                              .WithMessage($"{nameof(CreateJournalCommand.Userid)} {HelperValidator.NotNullOrEmpty}");
+        }
+
+        public Task<ValidationResult> ValidateAsync(CreateJournalCommand command)
+        {
+            return Task.FromResult(Validate(command));
         }
     }
 }

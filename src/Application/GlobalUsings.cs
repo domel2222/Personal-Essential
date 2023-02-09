@@ -19,6 +19,8 @@ global using MediatR.Pipeline;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Logging;
 global using System.Reflection;
+global using Application.Journals.Command.CreateJournal;
+global using Application.Journals.Command.DeleteJournal;
 
 namespace Application
 {
