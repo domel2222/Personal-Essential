@@ -1,6 +1,6 @@
 ﻿namespace Application.Journals.Command.UpdateJournal
 {
-    public sealed class UpdateJournalCommandValidator : AbstractValidator<UpdateJournalCommand>
+    public sealed class UpdateJournalCommandValidator : AbstractValidator<UpdateJournalCommand>, IJournalCommandValidator<UpdateJournalCommand>
     {
         public UpdateJournalCommandValidator()
         {
@@ -16,6 +16,11 @@
                     context.AddFailure($"{nameof(UpdateJournalCommand.Title)} :", $"{HelperValidator.CorrectDate}");
                 }
             });
+        }
+
+        public Task<ValidationResult> ValidateAsync(UpdateJournalCommand command)
+        {
+            return Task.FromResult(Validate(command));
         }
     }
 }

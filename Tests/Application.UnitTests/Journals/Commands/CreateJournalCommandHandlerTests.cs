@@ -1,6 +1,3 @@
-using Application.Common.Interfaces;
-using FluentValidation;
-
 namespace Application.UnitTests.Journals.Commands
 {
     public class CreateJournalCommandHandlerTests : BaseJournalCommandHandlerTests

@@ -1,4 +1,6 @@
-﻿namespace Application
+﻿using Application.Journals.Command.UpdateJournal;
+
+namespace Application
 {
     public static class DependencyInjection
     {
@@ -10,6 +12,7 @@
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviorSecond<,>));
             services.AddTransient<IValidator<CreateJournalCommand>, CreateJournalCommandValidator>();
             services.AddTransient<IValidator<DeleteJournalCommand>, DeleteJournalCommandValidator>();
+            services.AddTransient<IValidator<UpdateJournalCommand>, UpdateJournalCommandValidator>();
             // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviorPipeline<,>));
             //services.AddTransient(typeof(IRequestPreProcessor<>), typeof(LoggingBehavior<>));
 

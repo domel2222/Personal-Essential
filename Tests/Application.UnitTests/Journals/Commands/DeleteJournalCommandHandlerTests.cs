@@ -1,13 +1,17 @@
-﻿namespace Application.UnitTests.Journals.Commands
+﻿using Domain.Exceptions;
+
+namespace Application.UnitTests.Journals.Commands
 {
     public class DeleteJournalCommandHandlerTests : BaseJournalCommandHandlerTests
     {
         private readonly DeleteJournalCommandHandler _handler;
-
+        private readonly IJournalCommandValidator<DeleteJournalCommand> _validator;
         public DeleteJournalCommandHandlerTests()
         {
+            _validator = new DeleteJournalCommandValidator();
             _handler = new DeleteJournalCommandHandler(_mockUnitOfWork.Object,
-                                                  _mockJournalRepository.Object);
+                                                  _mockJournalRepository.Object,
+                                                        _validator);
         }
 
         [Fact]
@@ -30,22 +34,34 @@
         }
 
         [Fact]
-        public async void Handle_ForGivenNonExistingId_SaveChangesNeverInvoke()
+        public async void Handle_ProvideWithInvalidCommand_NotDeletedJournal()
         {
-            var nonExistingId = new Guid("3c5981df-5e57-4d96-a981-e0231e32069c");
             //arrange
+            var emptyGuidId = Guid.Empty;
+            var deleteCommand = new DeleteJournalCommand(emptyGuidId);
             var allJournalsBeforeCount = (await _mockJournalRepository.Object.GetAllJournalsByUserId(_userId, CancellationToken.None)).Count();
-            var deleteCommand = new DeleteJournalCommand(nonExistingId);
 
             //act
             var result = await _handler.Handle(deleteCommand, CancellationToken.None);
-
-            var allJournaForUser = await _mockJournalRepository.Object.GetAllJournalsByUserId(_userId, cancellationToken: CancellationToken.None);
+            var allJournalForUser = await _mockJournalRepository.Object.GetAllJournalsByUserId(_userId);
 
             //assert
-            result.Should().BeOfType<Result<Unit>>();
-            allJournaForUser.Should().HaveCount(allJournalsBeforeCount);
+            allJournalForUser.Should().HaveCount(allJournalsBeforeCount);
+        }
+
+        [Fact]
+        public async void Handle_ProvideNotExistId_ThrowExeptionAndSaveChangesNeverInvoke()
+        {
+            //arrange
+            var deleteCommand = new DeleteJournalCommand(_nonExistingId);
+
+            //act
+            Func<Task>act = () => _handler.Handle(deleteCommand, CancellationToken.None);
+
+            //assert
             _mockUnitOfWork.Verify(u => u.SaveChangesAsync(CancellationToken.None), Times.Never);
+            await act.Should().ThrowAsync<JournalNotFoundException>();
+
         }
     }
 }

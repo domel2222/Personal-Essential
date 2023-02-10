@@ -4,18 +4,21 @@
     {
         private readonly IJournalRepository _journalRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ICommandValidator<UpdateJournalCommand> _validator;
 
-        public UpdateJournalCommandHandler(IJournalRepository journalRepository, IUnitOfWork unitOfWork)
+        public UpdateJournalCommandHandler(
+                            IJournalRepository journalRepository, 
+                            IUnitOfWork unitOfWork, 
+                            ICommandValidator<UpdateJournalCommand> validator)
         {
             _journalRepository = journalRepository;
             _unitOfWork = unitOfWork;
+            _validator = validator;
         }
 
         public async Task<Result<Unit>> Handle(UpdateJournalCommand request, CancellationToken cancellationToken)
-        {
-            
-            var validator = new UpdateJournalCommandValidator();
-            var validationResult = await validator.ValidateAsync(request);
+        {       
+            var validationResult = await _validator.ValidateAsync(request);
 
             if (!validationResult.IsValid)
             {
@@ -24,7 +27,7 @@
             
             var journal = await _journalRepository.GetByIdAsync(request.JournalId, cancellationToken);
 
-            if (journal == null)
+            if (journal is null)
             {
                 throw new JournalNotFoundException(request.JournalId);
             }
