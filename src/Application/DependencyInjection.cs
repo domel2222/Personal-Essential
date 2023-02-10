@@ -9,7 +9,7 @@
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviorSecond<,>));
             services.AddTransient<IValidator<CreateJournalCommand>, CreateJournalCommandValidator>();
-            //services.AddTransient<IJournalCommandValidator<DeleteJournalCommand>, DeleteJournalCommandValidator>();
+            services.AddTransient<IValidator<DeleteJournalCommand>, DeleteJournalCommandValidator>();
             // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviorPipeline<,>));
             //services.AddTransient(typeof(IRequestPreProcessor<>), typeof(LoggingBehavior<>));
 

@@ -8,5 +8,6 @@ global using Application.UnitTests.Mocks;
 global using MapsterMapper;
 global using Mapster;
 global using Application.Journals.Command.DeleteJournal;
+global using Application.Common.Interfaces;
 global using Domain.Shared;
 global using MediatR;
