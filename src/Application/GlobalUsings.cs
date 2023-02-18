@@ -21,6 +21,7 @@ global using Microsoft.Extensions.Logging;
 global using System.Reflection;
 global using Application.Journals.Command.CreateJournal;
 global using Application.Journals.Command.DeleteJournal;
+global using Application.Journals.Command.UpdateJournal;
 
 namespace Application
 {

@@ -13,6 +13,6 @@
      double DailyResult,
      DateTime AssesmentDate,
      Guid SelfAssessmentValueId
-        ) : ICommand<Unit>
+        ) : ICommand<Result<Unit>>
     { }
 }

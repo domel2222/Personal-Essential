@@ -1,6 +1,4 @@
-﻿using Application.SelfAssessments.Commands;
-
-namespace Application.MostWinsDuringTheDay.Commands.UpdateWin
+﻿namespace Application.MostWinsDuringTheDay.Commands.UpdateWin
 {
     public  class UpdateMostWinDuringTheDayCommandValidator : AbstractValidator<UpdateMostWinDuringTheDayCommand>, IMostWinDuringTheDayCommandValidator<UpdateMostWinDuringTheDayCommand>
     {
