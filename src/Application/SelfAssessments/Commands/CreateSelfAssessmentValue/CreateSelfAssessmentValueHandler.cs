@@ -1,22 +1,34 @@
-﻿using Application.Contracts.Assessments;
-
-namespace Application.SelfAssessments.Commands
+﻿namespace Application.SelfAssessments.Commands
 {
-    public sealed class CreateSelfAssessmentCommandHandler : ICommandHandler<CreateSelfAssessmentCommand, SelfAssessmentValueResponse>
+    public sealed class CreateSelfAssessmentCommandHandler : ICommandHandler<CreateSelfAssessmentValueCommand, Result<SelfAssessmentValueResponse>>
     {
         private readonly ISelfAssessmentValueRepository _selfAssessmentValueRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly ICommandValidator<CreateSelfAssessmentValueCommand> _validator;
 
-        public CreateSelfAssessmentCommandHandler(IUnitOfWork unitOfWork, IMapper mapper, ISelfAssessmentValueRepository selfAssessmentValueRepository)
+        public CreateSelfAssessmentCommandHandler(
+            IUnitOfWork unitOfWork, 
+            IMapper mapper, 
+            ISelfAssessmentValueRepository selfAssessmentValueRepository,
+            ICommandValidator<CreateSelfAssessmentValueCommand> validator
+            )
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _selfAssessmentValueRepository = selfAssessmentValueRepository;
+            _validator = validator;
         }
 
-        public async Task<SelfAssessmentValueResponse> Handle(CreateSelfAssessmentCommand request, CancellationToken cancellationToken)
+        public async Task<Result<SelfAssessmentValueResponse>> Handle(CreateSelfAssessmentValueCommand request, CancellationToken cancellationToken)
         {
+            var validationResult = await _validator.ValidateAsync(request);
+
+            if (!validationResult.IsValid)
+            {
+                return Utilities.CreateValidationErrorList<SelfAssessmentValueResponse>(validationResult);
+            }
+
             var assessment = new SelfAssessmentValue
             {
                 DeepWorkResult = request.DeepWorkResult,
@@ -38,7 +50,8 @@ namespace Application.SelfAssessments.Commands
 
             await _unitOfWork.SaveChangesAsync();
 
-            return _mapper.Map<SelfAssessmentValueResponse>(assessment);
+            return Result<SelfAssessmentValueResponse>.Succeed(_mapper.Map<SelfAssessmentValueResponse>(assessment));
+            
         }
     }
 }

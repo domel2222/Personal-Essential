@@ -1,6 +1,6 @@
 ﻿namespace Application.SelfAssessments.Commands
 {
-    public sealed record  CreateSelfAssessmentCommand(
+    public sealed record  CreateSelfAssessmentValueCommand(
      double DeepWorkResult,
      double AffirmationResult,
      double UsePhoneResult,
@@ -14,7 +14,7 @@
      DateTime AssesmentDate,
     Guid UserId,
     Guid JournalId
-        ) : ICommand<SelfAssessmentValueResponse>
+        ) : ICommand<Result<SelfAssessmentValueResponse>>
     {
     }
 }

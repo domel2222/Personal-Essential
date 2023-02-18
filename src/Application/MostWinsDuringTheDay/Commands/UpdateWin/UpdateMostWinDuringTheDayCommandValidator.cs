@@ -1,8 +1,10 @@
-﻿namespace Application.MostWinsDuringTheDay.Commands.UpdateWin
+﻿using Application.SelfAssessments.Commands;
+
+namespace Application.MostWinsDuringTheDay.Commands.UpdateWin
 {
-    public  class UpdateMostWinDuringTheDayValidator : AbstractValidator<UpdateMostWinDuringTheDayCommand>
+    public  class UpdateMostWinDuringTheDayCommandValidator : AbstractValidator<UpdateMostWinDuringTheDayCommand>, IMostWinDuringTheDayCommandValidator<UpdateMostWinDuringTheDayCommand>
     {
-        public UpdateMostWinDuringTheDayValidator()
+        public UpdateMostWinDuringTheDayCommandValidator()
         {
             RuleFor(x => x.MostWinId)
                                            .NotEmpty()
@@ -21,6 +23,11 @@
                     context.AddFailure($"{nameof(UpdateMostWinDuringTheDayCommand.StrenghtName)}, {HelperValidator.NotExistInApplication}");
                 }
             });
+        }
+
+        public Task<ValidationResult> ValidateAsync(UpdateMostWinDuringTheDayCommand command)
+        {
+            return Task.FromResult(Validate(command));
         }
     }
 }

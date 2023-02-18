@@ -1,12 +1,12 @@
 ﻿namespace Application.MostWinsDuringTheDay.Command.CreateWin
 {
-    public sealed class CreateMostWinDuringTheDayHandler : ICommandHandler<CreateMostWinDuringTheDayCommand, MostWinDuringTheDayResponse>
+    public sealed class CreateMostWinDuringTheDayCommandHandler : ICommandHandler<CreateMostWinDuringTheDayCommand, MostWinDuringTheDayResponse>
     {
         private readonly IMostWinDuringTheDayRepository _mostWinDuringTheDayRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public CreateMostWinDuringTheDayHandler(IMostWinDuringTheDayRepository mostWinDuringTheDayRepository, IUnitOfWork unitOfWork, IMapper mapper)
+        public CreateMostWinDuringTheDayCommandHandler(IMostWinDuringTheDayRepository mostWinDuringTheDayRepository, IUnitOfWork unitOfWork, IMapper mapper)
         {
             _mostWinDuringTheDayRepository = mostWinDuringTheDayRepository;
             _unitOfWork = unitOfWork;

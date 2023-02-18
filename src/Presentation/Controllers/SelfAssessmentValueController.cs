@@ -30,7 +30,7 @@
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> CreateSelfAssessmentValue([FromBody] CreateSelfAssessmentValueRequest selfAssessmentValueRequest, CancellationToken cancellationToken)
         {
-            var command = _mapper.Map<CreateSelfAssessmentCommand>(selfAssessmentValueRequest);
+            var command = _mapper.Map<CreateSelfAssessmentValueCommand>(selfAssessmentValueRequest);
 
             var assessment = await _sender.Send(command, cancellationToken);
 

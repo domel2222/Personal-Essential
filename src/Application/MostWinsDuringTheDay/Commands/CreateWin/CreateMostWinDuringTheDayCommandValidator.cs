@@ -1,8 +1,8 @@
 ﻿namespace Application.MostWinsDuringTheDay.Command.CreateWin
 {
-    public  class CreateMostWinDuringTheDayValidator : AbstractValidator<CreateMostWinDuringTheDayCommand>
+    public  class CreateMostWinDuringTheDayCommandValidator : AbstractValidator<CreateMostWinDuringTheDayCommand>
     {
-        public CreateMostWinDuringTheDayValidator()
+        public CreateMostWinDuringTheDayCommandValidator()
         {
             RuleFor(x => x.JournalId)
                                                     .NotEmpty()
