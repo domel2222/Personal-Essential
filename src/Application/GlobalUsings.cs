@@ -22,6 +22,10 @@ global using System.Reflection;
 global using Application.Journals.Command.CreateJournal;
 global using Application.Journals.Command.DeleteJournal;
 global using Application.Journals.Command.UpdateJournal;
+global using Application.SelfAssessments.Commands;
+global using Application.SelfAssessments.Commands.DeleteSelfAssessmentValue;
+global using Application.SelfAssessments.Commands.UpdateSelfAssessmentValue;
+
 
 namespace Application
 {

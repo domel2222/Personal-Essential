@@ -24,7 +24,7 @@
 
             var journal = await _journalRepository.GetByIdAsync(request.JournalId, cancellationToken);
 
-            if(journal is null)
+            if (journal is null)
             {
                 throw new JournalNotFoundException(request.JournalId);
             }

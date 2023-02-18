@@ -1,6 +1,4 @@
-﻿using Application.Journals.Command.UpdateJournal;
-
-namespace Application
+﻿namespace Application
 {
     public static class DependencyInjection
     {
@@ -13,6 +11,9 @@ namespace Application
             services.AddTransient<IValidator<CreateJournalCommand>, CreateJournalCommandValidator>();
             services.AddTransient<IValidator<DeleteJournalCommand>, DeleteJournalCommandValidator>();
             services.AddTransient<IValidator<UpdateJournalCommand>, UpdateJournalCommandValidator>();
+            services.AddTransient<IValidator<CreateSelfAssessmentValueCommand>, CreateSelfAssessmentValueValidator>();
+            services.AddTransient<IValidator<UpdateSelfAssessmentValueCommand>, UpdateSelfAssessmentValueCommandValidator>();
+            services.AddTransient<IValidator<DeleteSelfAssessmentValueCommand>, DeleteSelfAssessmentValueValidator>();
             // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviorPipeline<,>));
             //services.AddTransient(typeof(IRequestPreProcessor<>), typeof(LoggingBehavior<>));
 
